@@ -45,6 +45,10 @@ $fetch_customer = mysqli_fetch_assoc($query_customer);
 $sql_faq_section = "SELECT faq_id, pertanyaan_faq, jawaban_faq FROM faq_section";
 $query_faq_section = mysqli_query($koneksi, $sql_faq_section);
 $fetch_faq_section = mysqli_fetch_assoc($query_faq_section);
+
+$sql_kategori_portofolio = "SELECT kategori_id, kategori_porto FROM kategori_portofolio";
+$query_kategori_portofolio = mysqli_query($koneksi, $sql_kategori_portofolio);
+$fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
 ?>
 
 <!DOCTYPE html>
@@ -353,7 +357,7 @@ $fetch_faq_section = mysqli_fetch_assoc($query_faq_section);
                   </div>
                </div>
             </div>
-            <div class="row" >
+            <div class="row">
                <!-- single counter -->
                <div class="col-md-3 col-sm-6">
                   <div class="counter-project">
@@ -442,14 +446,23 @@ $fetch_faq_section = mysqli_fetch_assoc($query_faq_section);
                   <div class="portfolio-menu filter-button-group text-center">
                      <ul>
                         <li class="active" data-filter="*">All Projects</li>
-                        <li data-filter=".branding">Branding</li>
-                        <li data-filter=".web">Web design</li>
-                        <li data-filter=".developemt">developemt</li>
-                        <li data-filter=".ui">ui Design</li>
+                        <?php
+                        $sql_kategori_portofolio = "SELECT kategori_id, kategori_porto FROM kategori_portofolio";
+                        $query_kategori_portofolio = mysqli_query($koneksi, $sql_kategori_portofolio);
+
+                        while ($fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio)) {
+                           $kategori_id = $fetch_kategori_portofolio['kategori_id'];
+                           $kategori_porto = $fetch_kategori_portofolio['kategori_porto'];
+                        ?>
+                           <li data-filter=".<?= $kategori_porto ?>"><?= $kategori_porto ?></li>
+                        <?php
+                        }
+                        ?>
                      </ul>
                   </div>
                </div>
             </div>
+
          </div>
          <div class="grid">
             <!-- Single Portfolio -->
