@@ -579,7 +579,7 @@
                             <!-- Form untuk edit data service -->
                             <form action="proses_edit_service.php" method="POST" enctype="multipart/form-data">
                               <div class="form-group">
-                                <input type="hidden" class="form-control-file" id="id_service<?= $id_service ?>" name="id_service" >
+                                <input type="hidden" class="form-control-file" id="id_service<?= $id_service ?>" name="id_service">
                               </div>
                               <div class="form-group">
                                 <label for="gambarServiceEdit<?= $id_service ?>" style="color: black;">Gambar Service:</label>
@@ -783,6 +783,131 @@
           </div>
         </div>
       </div>
+
+      <!-- Kategori Portofolio -->
+      <div class="col-lg-6 col-xs-6">
+        <div class="small-box bg-purple">
+          <div class="inner">
+            <p><strong>Kategori Portofolio</strong></p>
+            <?php
+            include_once "../sambungan.php";
+            $sql_kategori_portofolio = "SELECT kategori_id, kategori_porto FROM kategori_portofolio";
+            $query_kategori_portofolio = mysqli_query($koneksi, $sql_kategori_portofolio);
+            ?>
+            <div class="tabelkategori_section">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama Kategori</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $no = 1;
+                  while ($fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio)) {
+                    $kategori_id = $fetch_kategori_portofolio['kategori_id'];
+                    $kategori_porto = $fetch_kategori_portofolio['kategori_porto'];
+                  ?>
+                    <tr>
+                      <td><?= $no ?></td>
+                      <td><?= $kategori_porto ?></td>
+                      <td class="text-center">
+                        <form action="" method="POST">
+                          <input type="hidden" name="kategori_id" value="<?= $kategori_id ?>">
+                          <button type="submit" name="hapus_kategori" class="btn btn-danger">Hapus</button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editKategoriModal<?= $kategori_id ?>">Edit</button>
+                        </form>
+                      </td>
+                    </tr>
+                    <!-- Modal Edit -->
+                    <div class="modal fade" id="editKategoriModal<?= $kategori_id ?>" tabindex="-1" role="dialog" aria-labelledby="editKategoriModalLabel<?= $kategori_id ?>" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" style="color: black;" id="editKategoriModalLabel<?= $kategori_id ?>">Edit Kategori Portofolio</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- Form untuk edit data kategori -->
+                            <form action="proses_edit_kategori.php" method="POST" enctype="multipart/form-data">
+                              <div class="form-group">
+                                <input type="hidden" class="form-control-file" id="kategori_id<?= $kategori_id ?>" name="kategori_id" value="<?= $kategori_id ?>">
+                              </div>
+                              <div class="form-group">
+                                <label for="kategori_porto<?= $kategori_id ?>" style="color: black;">Nama Kategori:</label>
+                                <input type="text" class="form-control" id="kategori_porto<?= $kategori_id ?>" name="kategori_porto" value="<?= $kategori_porto ?>">
+                              </div>
+                              <button type="submit" class="btn btn-primary">Simpan</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <?php
+                    $no++;
+                  }
+                  if ($no === 1) {
+                    echo "<tr><td colspan='3'>Tidak ada kategori portofolio</td></tr>";
+                  }
+                  ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <a href="#" class="small-box-footer" data-toggle="modal" data-target="#tambahkategori_sectionModal">Tambah kategori<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- HAPUS kategori portofolio -->
+      <?php
+      if (isset($_POST['hapus_kategori'])) {
+        $kategori_id = $_POST['kategori_id'];
+        // Lakukan proses hapus kategori portofolio sesuai dengan kategori_id yang diterima
+        $sql_hapus_kategori = "DELETE FROM kategori_portofolio WHERE kategori_id = '$kategori_id'";
+        $query_hapus_kategori = mysqli_query($koneksi, $sql_hapus_kategori);
+        if ($query_hapus_kategori) {
+          // Redirect atau perbarui halaman setelah hapus berhasil
+          echo '<script>alert("Kategori portofolio berhasil dihapus."); window.location.href = document.referrer;</script>';
+          exit;
+        } else {
+          echo '<script>alert("Terjadi kesalahan saat menghapus kategori portofolio."); window.location.href = document.referrer;</script>';
+        }
+      }
+      ?>
+      <!-- Modal Tambah Kategori -->
+      <div class="modal fade" id="tambahkategori_sectionModal" tabindex="-1" role="dialog" aria-labelledby="tambahKategoriModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="color: black;" id="tambahKategoriModalLabel">Tambah Kategori Portofolio</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Form untuk tambah data kategori -->
+              <form action="proses_tambah_kategori.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="kategori_porto" style="color: black;">Nama Kategori:</label>
+                  <input type="text" class="form-control" id="kategori_porto" name="kategori_porto" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Tambah</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORTOFOLIO -->
+
     </div>
+
+
+
+
+
 
     <?php include "bawah.php"; ?>
