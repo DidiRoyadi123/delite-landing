@@ -78,19 +78,19 @@ $fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
    <style>
       @media screen and (max-width: 600px) {
          .logo {
-            width: 30%;
+            width: 30% !important;
          }
       }
 
       .sticky .logo a img {
-         width: 100%;
+         width: 100% !important;
       }
 
       .section-padding {
          padding: 10px 0;
       }
 
-      /* all warna start*/
+      /* all warna Utama start*/
       .portfolio-menu ul li.active,
       .flaticon-right-quote::before,
       .owl-carousel .owl-nav>div:hover,
@@ -514,84 +514,7 @@ $fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
                ?>
             </div>
 
-            <!-- /Single Portfolio -->
-            <!-- Single Portfolio -->
-            <div class="single-portfolio grid-item developemt web ui">
-               <img src="assets/img/portfolio2.png" alt="">
-               <div class="portfolio-wrapper">
-                  <div class="portfolio-content">
-                     <h3>Landing Page</h3>
-                     <p>UI/UX Design</p>
-                  </div>
-               </div>
-            </div>
-            <!-- /Single Portfolio -->
-            <!-- Single Portfolio -->
-            <div class="single-portfolio grid-item branding ui web">
-               <img src="assets/img/portfolio3.png" alt="">
-               <div class="portfolio-wrapper">
-                  <div class="portfolio-content">
-                     <h3>business card</h3>
-                     <p>UI/UX Design</p>
-                  </div>
-               </div>
-            </div>
-            <!-- /Single Portfolio -->
-            <!-- Single Portfolio -->
-            <div class="single-portfolio grid-item branding ui web">
-               <img src="assets/img/portfolio4.png" alt="">
-               <div class="portfolio-wrapper">
-                  <div class="portfolio-content">
-                     <h3>mockup</h3>
-                     <p>UI/UX Design</p>
-                  </div>
-               </div>
-            </div>
-            <!-- /Single Portfolio -->
-            <!-- Single Portfolio -->
-            <div class="single-portfolio grid-item branding ui developemt">
-               <img src="assets/img/portfolio5.png" alt="">
-               <div class="portfolio-wrapper">
-                  <div class="portfolio-content">
-                     <h3>T-Shirt</h3>
-                     <p>UI/UX Design</p>
-                  </div>
-               </div>
-            </div>
-            <!-- /Single Portfolio -->
-            <!-- Single Portfolio -->
-            <div class="single-portfolio grid-item developemt ui">
-               <img src="assets/img/portfolio6.png" alt="">
-               <div class="portfolio-wrapper">
-                  <div class="portfolio-content">
-                     <h3>brand mockup</h3>
-                     <p>UI/UX Design</p>
-                  </div>
-               </div>
-            </div>
-            <!-- /Single Portfolio -->
-            <!-- Single Portfolio -->
-            <div class="single-portfolio grid-item web branding">
-               <img src="assets/img/portfolio7.png" alt="">
-               <div class="portfolio-wrapper">
-                  <div class="portfolio-content">
-                     <h3>headcap</h3>
-                     <p>UI/UX Design</p>
-                  </div>
-               </div>
-            </div>
-            <!-- /Single Portfolio -->
-            <!-- Single Portfolio -->
-            <div class="single-portfolio grid-item branding ui web ">
-               <img src="assets/img/portfolio8.png" alt="">
-               <div class="portfolio-wrapper">
-                  <div class="portfolio-content">
-                     <h3>book print</h3>
-                     <p>UI/UX Design</p>
-                  </div>
-               </div>
-            </div>
-            <!-- /Single Portfolio -->
+            
          </div>
       </div>
       <!-- /End Portfolio Area-->
