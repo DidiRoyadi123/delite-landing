@@ -188,6 +188,26 @@ $fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
       .btn-link {
          padding: 0;
       }
+      /* img portofolio */
+      .single-portfolio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 380px;
+}
+
+.img-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+      /* end img portofolio */
    </style>
 </head>
 
@@ -466,15 +486,34 @@ $fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
          </div>
          <div class="grid">
             <!-- Single Portfolio -->
-            <div class="single-portfolio grid-item branding web ui">
-               <img src="assets/img/portfolio1.png" alt="">
-               <div class="portfolio-wrapper">
-                  <div class="portfolio-content">
-                     <h3>Landing Page</h3>
-                     <p>UI/UX Design</p>
+            <?php
+            $sql_portofolio = "SELECT p.nama_kegiatan, k.kategori_porto, p.lokasi_img
+                   FROM portofolio p
+                   INNER JOIN kategori_portofolio k ON p.kategori_id = k.kategori_id";
+            $query_portofolio = mysqli_query($koneksi, $sql_portofolio);
+            ?>
+
+            <div class="portfolio-container">
+               <?php
+               while ($row = mysqli_fetch_assoc($query_portofolio)) {
+                  $nama_kegiatan = $row['nama_kegiatan'];
+                  $kategori_porto = $row['kategori_porto'];
+                  $lokasi_img = str_replace('../../', '', $row['lokasi_img']);
+               ?>
+                  <div class="single-portfolio grid-item <?= $kategori_porto ?>" style="max-width: 70%; height: 380px;">
+                     <img src="<?= $lokasi_img ?>" alt="" >
+                     <div class="portfolio-wrapper">
+                        <div class="portfolio-content">
+                           <h3><?= $nama_kegiatan ?></h3>
+                           <p><?= $kategori_porto ?></p>
+                        </div>
+                     </div>
                   </div>
-               </div>
+               <?php
+               }
+               ?>
             </div>
+
             <!-- /Single Portfolio -->
             <!-- Single Portfolio -->
             <div class="single-portfolio grid-item developemt web ui">
