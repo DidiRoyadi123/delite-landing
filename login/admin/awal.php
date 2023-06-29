@@ -489,26 +489,26 @@
             $fetch_customer = mysqli_fetch_assoc($query_customer);
             ?>
             <div class="responsive-table-container">
-            <table class="table table-bordered">
-              <tbody>
-                <tr>
-                  <td><strong>Established</strong></td>
-                  <td><?php echo $fetch_customer['established']; ?></td>
-                </tr>
-                <tr>
-                  <td><strong>Happy Client</strong></td>
-                  <td><?php echo $fetch_customer['happy_client']; ?></td>
-                </tr>
-                <tr>
-                  <td><strong>Active Client</strong></td>
-                  <td><?php echo $fetch_customer['active_client']; ?></td>
-                </tr>
-                <tr>
-                  <td><strong>Success Client</strong></td>
-                  <td><?php echo $fetch_customer['success_client']; ?></td>
-                </tr>
-              </tbody>
-            </table>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td><strong>Established</strong></td>
+                    <td><?php echo $fetch_customer['established']; ?></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Happy Client</strong></td>
+                    <td><?php echo $fetch_customer['happy_client']; ?></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Active Client</strong></td>
+                    <td><?php echo $fetch_customer['active_client']; ?></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Success Client</strong></td>
+                    <td><?php echo $fetch_customer['success_client']; ?></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="icon">
@@ -573,78 +573,78 @@
             $query_service_page = mysqli_query($koneksi, $sql_service_page);
             ?>
             <div class="tabelService">
-            <div class="responsive-table-container">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Judul</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  $no = $offset_service + 1;
-                  while ($fetch_service = mysqli_fetch_assoc($query_service_page)) {
-                    $id_service = $fetch_service['id_service'];
-                    $judul_service = $fetch_service['judul_service'];
-                    $caption_service = $fetch_service['caption_service'];
-                  ?>
+              <div class="responsive-table-container">
+                <table class="table table-bordered">
+                  <thead>
                     <tr>
-                      <td><?= $no ?></td>
-                      <td><?= $judul_service ?></td>
-                      <td class="text-center">
-                        <form action="" method="POST">
-                          <input type="hidden" name="id_service" value="<?= $id_service ?>">
-                          <button type="submit" name="hapus_service" class="btn btn-danger">Hapus</button>
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editServiceModal<?= $id_service ?>">Edit</button>
-                        </form>
-                      </td>
+                      <th>No</th>
+                      <th>Judul</th>
+                      <th>Aksi</th>
                     </tr>
-                    <!-- Modal Edit -->
-                    <div class="modal fade" id="editServiceModal<?= $id_service ?>" tabindex="-1" role="dialog" aria-labelledby="editServiceModalLabel<?= $id_service ?>" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="editServiceModalLabel<?= $id_service ?>" style="color: black;">Edit Service</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <!-- Form untuk edit data service -->
-                            <form action="proses_edit_service.php" method="POST" enctype="multipart/form-data">
-                              <div class="form-group">
-                                <input type="hidden" class="form-control-file" id="id_service<?= $id_service ?>" name="id_service" value="<?= $id_service ?>">
-                              </div>
-                              <div class="form-group">
-                                <label for="gambarServiceEdit<?= $id_service ?>" style="color: black;">Gambar Service:</label>
-                                <input type="file" class="form-control-file" id="gambarServiceEdit<?= $id_service ?>" name="gambarServiceEdit">
-                              </div>
-                              <div class="form-group">
-                                <label for="judulServiceEdit<?= $id_service ?>" style="color: black;">Judul Service:</label>
-                                <input type="text" class="form-control" id="judulServiceEdit<?= $id_service ?>" name="judulServiceEdit" value="<?= $judul_service ?>">
-                              </div>
-                              <div class="form-group">
-                                <label for="captionServiceEdit<?= $id_service ?>" style="color: black;">Caption Service:</label>
-                                <textarea class="form-control" id="captionServiceEdit<?= $id_service ?>" name="captionServiceEdit"><?= $caption_service ?></textarea>
-                              </div>
-                              <button type="submit" class="btn btn-primary">Simpan</button>
-                            </form>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $no = $offset_service + 1;
+                    while ($fetch_service = mysqli_fetch_assoc($query_service_page)) {
+                      $id_service = $fetch_service['id_service'];
+                      $judul_service = $fetch_service['judul_service'];
+                      $caption_service = $fetch_service['caption_service'];
+                    ?>
+                      <tr>
+                        <td><?= $no ?></td>
+                        <td><?= $judul_service ?></td>
+                        <td class="text-center">
+                          <form action="" method="POST">
+                            <input type="hidden" name="id_service" value="<?= $id_service ?>">
+                            <button type="submit" name="hapus_service" class="btn btn-danger">Hapus</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editServiceModal<?= $id_service ?>">Edit</button>
+                          </form>
+                        </td>
+                      </tr>
+                      <!-- Modal Edit -->
+                      <div class="modal fade" id="editServiceModal<?= $id_service ?>" tabindex="-1" role="dialog" aria-labelledby="editServiceModalLabel<?= $id_service ?>" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="editServiceModalLabel<?= $id_service ?>" style="color: black;">Edit Service</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- Form untuk edit data service -->
+                              <form action="proses_edit_service.php" method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                  <input type="hidden" class="form-control-file" id="id_service<?= $id_service ?>" name="id_service" value="<?= $id_service ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="gambarServiceEdit<?= $id_service ?>" style="color: black;">Gambar Service:</label>
+                                  <input type="file" class="form-control-file" id="gambarServiceEdit<?= $id_service ?>" name="gambarServiceEdit">
+                                </div>
+                                <div class="form-group">
+                                  <label for="judulServiceEdit<?= $id_service ?>" style="color: black;">Judul Service:</label>
+                                  <input type="text" class="form-control" id="judulServiceEdit<?= $id_service ?>" name="judulServiceEdit" value="<?= $judul_service ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="captionServiceEdit<?= $id_service ?>" style="color: black;">Caption Service:</label>
+                                  <textarea class="form-control" id="captionServiceEdit<?= $id_service ?>" name="captionServiceEdit"><?= $caption_service ?></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                              </form>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  <?php
-                    $no++;
-                  }
-                  if ($no === 1) {
-                    echo "<tr><td colspan='3'>Tidak ada service</td></tr>";
-                  }
-                  ?>
-                </tbody>
-              </table>
-            </div>
+                    <?php
+                      $no++;
+                    }
+                    if ($no === 1) {
+                      echo "<tr><td colspan='3'>Tidak ada service</td></tr>";
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
           <?php if ($total_pages_service > 1) : ?>
@@ -668,20 +668,24 @@
 
       <!-- HAPUS SERVICE -->
       <?php
-      if (isset($_POST['hapus_service'])) {
-        $id_service = $_POST['id_service'];
-        // Lakukan proses hapus service sesuai dengan id_service yang diterima
-        $sql_hapus_service = "DELETE FROM services WHERE id_service = '$id_service'";
-        $query_hapus_service = mysqli_query($koneksi, $sql_hapus_service);
-        if ($query_hapus_service) {
-          // Redirect atau perbarui halaman setelah hapus berhasil
-          echo '<script>alert("service berhasil dihapus."); window.location.href = document.referrer;</script>';
-          exit;
-        } else {
-          echo '<script>alert("Terjadi kesalahan saat menghapus service."); window.location.href = document.referrer;</script>';
-        }
-      }
-      ?>
+if (isset($_POST['hapus_service'])) {
+  $id_service = $_POST['id_service'];
+
+  // Lakukan proses hapus service sesuai dengan id_service yang diterima
+  $sql_hapus_service = "DELETE FROM services WHERE id_service = '$id_service'";
+  $query_hapus_service = mysqli_query($koneksi, $sql_hapus_service);
+  if ($query_hapus_service) {
+    // Redirect atau perbarui halaman setelah hapus berhasil
+    $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+    echo '<script>alert("Service berhasil dihapus."); window.location.href = "'.$referrer.'";</script>';
+    exit;
+  } else {
+    $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+    echo '<script>alert("Terjadi kesalahan saat menghapus service."); window.location.href = "'.$referrer.'";</script>';
+  }
+}
+?>
+
       <!-- Modal Tambah Service -->
       <div class="modal fade" id="tambahserviceModal" tabindex="-1" role="dialog" aria-labelledby="tambahserviceModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -732,74 +736,74 @@
             $query_faq_page = mysqli_query($koneksi, $sql_faq_page);
             ?>
             <div class="tabelfaq_section">
-            <div class="responsive-table-container">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Pertanyaan</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  $no = $offset_faq + 1;
-                  while ($fetch_faq_section = mysqli_fetch_assoc($query_faq_page)) {
-                    $id_faq_section = $fetch_faq_section['faq_id'];
-                    $pertanyaan_faq_section = $fetch_faq_section['pertanyaan_faq'];
-                    $jawaban_faq_section = $fetch_faq_section['jawaban_faq'];
-                  ?>
+              <div class="responsive-table-container">
+                <table class="table table-bordered">
+                  <thead>
                     <tr>
-                      <td><?= $no ?></td>
-                      <td><?= $pertanyaan_faq_section ?></td>
-                      <td class="text-center">
-                        <form action="" method="POST">
-                          <input type="hidden" name="id_faq_section" value="<?= $id_faq_section ?>">
-                          <button type="submit" name="hapus_faq_section" class="btn btn-danger">Hapus</button>
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editfaq_sectionModal<?= $id_faq_section ?>">Edit</button>
-                        </form>
-                      </td>
+                      <th>No</th>
+                      <th>Pertanyaan</th>
+                      <th>Aksi</th>
                     </tr>
-                    <!-- Modal Edit -->
-                    <div class="modal fade" id="editfaq_sectionModal<?= $id_faq_section ?>" tabindex="-1" role="dialog" aria-labelledby="editfaq_sectionModalLabel<?= $id_faq_section ?>" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" style="color: black;" id="editfaq_sectionModalLabel<?= $id_faq_section ?>">Edit FAQ Section</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <!-- Form untuk edit data faq_section -->
-                            <form action="proses_edit_faq.php" method="POST" enctype="multipart/form-data">
-                              <div class="form-group">
-                                <input type="hidden" class="form-control-file" id="id_faq_section<?= $id_faq_section ?>" name="id_faq_section" value="<?= $id_faq_section ?>">
-                              </div>
-                              <div class="form-group">
-                                <label for="pertanyaanfaq_sectionEdit<?= $id_faq_section ?>" style="color: black;">Pertanyaan:</label>
-                                <input type="text" class="form-control" id="pertanyaanfaq_sectionEdit<?= $id_faq_section ?>" name="pertanyaanfaq_sectionEdit" value="<?= $pertanyaan_faq_section ?>">
-                              </div>
-                              <div class="form-group">
-                                <label for="jawabanfaq_sectionEdit<?= $id_faq_section ?>" style="color: black;">Jawaban FAQ:</label>
-                                <textarea class="form-control" id="jawabanfaq_sectionEdit<?= $id_faq_section ?>" name="jawabanfaq_sectionEdit"><?= $jawaban_faq_section ?></textarea>
-                              </div>
-                              <button type="submit" class="btn btn-primary">Simpan</button>
-                            </form>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $no = $offset_faq + 1;
+                    while ($fetch_faq_section = mysqli_fetch_assoc($query_faq_page)) {
+                      $id_faq_section = $fetch_faq_section['faq_id'];
+                      $pertanyaan_faq_section = $fetch_faq_section['pertanyaan_faq'];
+                      $jawaban_faq_section = $fetch_faq_section['jawaban_faq'];
+                    ?>
+                      <tr>
+                        <td><?= $no ?></td>
+                        <td><?= $pertanyaan_faq_section ?></td>
+                        <td class="text-center">
+                          <form action="" method="POST">
+                            <input type="hidden" name="id_faq_section" value="<?= $id_faq_section ?>">
+                            <button type="submit" name="hapus_faq_section" class="btn btn-danger">Hapus</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editfaq_sectionModal<?= $id_faq_section ?>">Edit</button>
+                          </form>
+                        </td>
+                      </tr>
+                      <!-- Modal Edit -->
+                      <div class="modal fade" id="editfaq_sectionModal<?= $id_faq_section ?>" tabindex="-1" role="dialog" aria-labelledby="editfaq_sectionModalLabel<?= $id_faq_section ?>" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" style="color: black;" id="editfaq_sectionModalLabel<?= $id_faq_section ?>">Edit FAQ Section</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- Form untuk edit data faq_section -->
+                              <form action="proses_edit_faq.php" method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                  <input type="hidden" class="form-control-file" id="id_faq_section<?= $id_faq_section ?>" name="id_faq_section" value="<?= $id_faq_section ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="pertanyaanfaq_sectionEdit<?= $id_faq_section ?>" style="color: black;">Pertanyaan:</label>
+                                  <input type="text" class="form-control" id="pertanyaanfaq_sectionEdit<?= $id_faq_section ?>" name="pertanyaanfaq_sectionEdit" value="<?= $pertanyaan_faq_section ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="jawabanfaq_sectionEdit<?= $id_faq_section ?>" style="color: black;">Jawaban FAQ:</label>
+                                  <textarea class="form-control" id="jawabanfaq_sectionEdit<?= $id_faq_section ?>" name="jawabanfaq_sectionEdit"><?= $jawaban_faq_section ?></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                              </form>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  <?php
-                    $no++;
-                  }
-                  if ($no === 1) {
-                    echo "<tr><td colspan='3'>Tidak ada faq_section</td></tr>";
-                  }
-                  ?>
-                </tbody>
-              </table>
-            </div>
+                    <?php
+                      $no++;
+                    }
+                    if ($no === 1) {
+                      echo "<tr><td colspan='3'>Tidak ada faq_section</td></tr>";
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
           <?php if ($total_pages_faq > 1) : ?>
@@ -823,20 +827,24 @@
 
       <!-- HAPUS faq -->
       <?php
-      if (isset($_POST['hapus_faq_section'])) {
-        $id_faq_section = $_POST['id_faq_section'];
-        // Lakukan proses hapus faq sesuai dengan id_faq_section yang diterima
-        $sql_hapus_faq_section = "DELETE FROM faq_section WHERE faq_id = '$id_faq_section'";
-        $query_hapus_faq_section = mysqli_query($koneksi, $sql_hapus_faq_section);
-        if ($query_hapus_faq_section) {
-          // Redirect atau perbarui halaman setelah hapus berhasil
-          echo '<script>alert("FAQ berhasil dihapus."); window.location.href = document.referrer;</script>';
-          exit;
-        } else {
-          echo '<script>alert("Terjadi kesalahan saat menghapus FAQ."); window.location.href = document.referrer;</script>';
-        }
-      }
-      ?>
+if (isset($_POST['hapus_faq_section'])) {
+  $id_faq_section = $_POST['id_faq_section'];
+
+  // Lakukan proses hapus faq sesuai dengan id_faq_section yang diterima
+  $sql_hapus_faq_section = "DELETE FROM faq_section WHERE faq_id = '$id_faq_section'";
+  $query_hapus_faq_section = mysqli_query($koneksi, $sql_hapus_faq_section);
+  if ($query_hapus_faq_section) {
+    // Redirect atau perbarui halaman setelah hapus berhasil
+    $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+    echo '<script>alert("FAQ berhasil dihapus."); window.location.href = "'.$referrer.'";</script>';
+    exit;
+  } else {
+    $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+    echo '<script>alert("Terjadi kesalahan saat menghapus FAQ."); window.location.href = "'.$referrer.'";</script>';
+  }
+}
+?>
+
       <!-- Modal Tambah FAQ -->
       <div class="modal fade" id="tambahfaq_sectionModal" tabindex="-1" role="dialog" aria-labelledby="tambahfaq_sectionModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -883,69 +891,69 @@
             $query_kategori_page = mysqli_query($koneksi, $sql_kategori_page);
             ?>
             <div class="tabelkategori_section">
-            <div class="responsive-table-container">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Nama Kategori</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  $no = $offset_kategori + 1;
-                  while ($fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_page)) {
-                    $kategori_id = $fetch_kategori_portofolio['kategori_id'];
-                    $kategori_porto = $fetch_kategori_portofolio['kategori_porto'];
-                  ?>
+              <div class="responsive-table-container">
+                <table class="table table-bordered">
+                  <thead>
                     <tr>
-                      <td><?= $no ?></td>
-                      <td><?= $kategori_porto ?></td>
-                      <td class="text-center">
-                        <form action="" method="POST">
-                          <input type="hidden" name="kategori_id" value="<?= $kategori_id ?>">
-                          <button type="submit" name="hapus_kategori" class="btn btn-danger">Hapus</button>
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editKategoriModal<?= $kategori_id ?>">Edit</button>
-                        </form>
-                      </td>
+                      <th>No</th>
+                      <th>Nama Kategori</th>
+                      <th>Aksi</th>
                     </tr>
-                    <!-- Modal Edit -->
-                    <div class="modal fade" id="editKategoriModal<?= $kategori_id ?>" tabindex="-1" role="dialog" aria-labelledby="editKategoriModalLabel<?= $kategori_id ?>" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" style="color: black;" id="editKategoriModalLabel<?= $kategori_id ?>">Edit Kategori Portofolio</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <!-- Form untuk edit data kategori -->
-                            <form action="proses_edit_kategori.php" method="POST" enctype="multipart/form-data">
-                              <div class="form-group">
-                                <input type="hidden" class="form-control-file" id="kategori_id<?= $kategori_id ?>" name="kategori_id" value="<?= $kategori_id ?>">
-                              </div>
-                              <div class="form-group">
-                                <label for="kategori_porto<?= $kategori_id ?>" style="color: black;">Nama Kategori:</label>
-                                <input type="text" class="form-control" id="kategori_porto<?= $kategori_id ?>" name="kategori_porto" value="<?= $kategori_porto ?>">
-                              </div>
-                              <button type="submit" class="btn btn-primary">Simpan</button>
-                            </form>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $no = $offset_kategori + 1;
+                    while ($fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_page)) {
+                      $kategori_id = $fetch_kategori_portofolio['kategori_id'];
+                      $kategori_porto = $fetch_kategori_portofolio['kategori_porto'];
+                    ?>
+                      <tr>
+                        <td><?= $no ?></td>
+                        <td><?= $kategori_porto ?></td>
+                        <td class="text-center">
+                          <form action="" method="POST">
+                            <input type="hidden" name="kategori_id" value="<?= $kategori_id ?>">
+                            <button type="submit" name="hapus_kategori" class="btn btn-danger">Hapus</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editKategoriModal<?= $kategori_id ?>">Edit</button>
+                          </form>
+                        </td>
+                      </tr>
+                      <!-- Modal Edit -->
+                      <div class="modal fade" id="editKategoriModal<?= $kategori_id ?>" tabindex="-1" role="dialog" aria-labelledby="editKategoriModalLabel<?= $kategori_id ?>" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" style="color: black;" id="editKategoriModalLabel<?= $kategori_id ?>">Edit Kategori Portofolio</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- Form untuk edit data kategori -->
+                              <form action="proses_edit_kategori.php" method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                  <input type="hidden" class="form-control-file" id="kategori_id<?= $kategori_id ?>" name="kategori_id" value="<?= $kategori_id ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="kategori_porto<?= $kategori_id ?>" style="color: black;">Nama Kategori:</label>
+                                  <input type="text" class="form-control" id="kategori_porto<?= $kategori_id ?>" name="kategori_porto" value="<?= $kategori_porto ?>">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                              </form>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  <?php
-                    $no++;
-                  }
-                  if ($no === 1) {
-                    echo "<tr><td colspan='3'>Tidak ada kategori portofolio</td></tr>";
-                  }
-                  ?>
-                </tbody>
-              </table>
-            </div>
+                    <?php
+                      $no++;
+                    }
+                    if ($no === 1) {
+                      echo "<tr><td colspan='3'>Tidak ada kategori portofolio</td></tr>";
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <?php
             // Tampilkan nomor/next halaman jika total halaman lebih dari 1
@@ -988,13 +996,16 @@
         $query_hapus_kategori = mysqli_query($koneksi, $sql_hapus_kategori);
         if ($query_hapus_kategori) {
           // Redirect atau perbarui halaman setelah hapus berhasil
-          echo '<script>alert("Kategori portofolio berhasil dihapus."); window.location.href = document.referrer;</script>';
+          $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+          echo '<script>alert("Kategori portofolio berhasil dihapus."); window.location.href = "' . $referrer . '";</script>';
           exit;
         } else {
-          echo '<script>alert("Terjadi kesalahan saat menghapus kategori portofolio."); window.location.href = document.referrer;</script>';
+          $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+          echo '<script>alert("Terjadi kesalahan saat menghapus kategori portofolio."); window.location.href = "' . $referrer . '";</script>';
         }
       }
       ?>
+
       <!-- Modal Tambah Kategori -->
       <div class="modal fade" id="tambahkategori_sectionModal" tabindex="-1" role="dialog" aria-labelledby="tambahKategoriModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -1055,92 +1066,92 @@
             $query_portofolio_page_porto = mysqli_query($koneksi, $sql_portofolio_page_porto);
             ?>
             <div class="tabelportofolio_section">
-            <div class="responsive-table-container">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Kategori</th>
-                    <th>Nama Kegiatan</th>
-                    <!-- <th>Lokasi Image</th> -->
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  $no = $offset + 1;
-                  while ($row = mysqli_fetch_assoc($query_portofolio_page_porto)) {
-                    $porto_id = $row['porto_id'];
-                    $kategori_porto = $row['kategori_porto'];
-                    $nama_kegiatan = $row['nama_kegiatan'];
-                    $lokasi_img = $row['lokasi_img'];
-                  ?>
+              <div class="responsive-table-container">
+                <table class="table table-bordered">
+                  <thead>
                     <tr>
-                      <td><?= $no ?></td>
-                      <td><?= $kategori_porto ?></td>
-                      <td><?= $nama_kegiatan ?></td>
-                      <!-- <td><?= $lokasi_img ?></td> -->
-                      <td class="text-center">
-                        <form action="" method="POST">
-                          <input type="hidden" name="porto_id" value="<?= $porto_id ?>">
-                          <button type="submit" name="hapus_portofolio" class="btn btn-danger">Hapus</button>
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPortofolioModal<?= $porto_id ?>">Edit</button>
-                        </form>
-                      </td>
+                      <th>No</th>
+                      <th>Kategori</th>
+                      <th>Nama Kegiatan</th>
+                      <!-- <th>Lokasi Image</th> -->
+                      <th>Aksi</th>
                     </tr>
-                    <!-- Modal Edit -->
-                    <div class="modal fade" id="editPortofolioModal<?= $porto_id ?>" tabindex="-1" role="dialog" aria-labelledby="editPortofolioModalLabel<?= $porto_id ?>" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" style="color: black;" id="editPortofolioModalLabel<?= $porto_id ?>">Edit Portofolio</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <!-- Form untuk edit data portofolio -->
-                            <form action="proses_edit_portofolio.php" method="POST" enctype="multipart/form-data">
-                              <div class="form-group">
-                                <input type="hidden" class="form-control-file" id="porto_id<?= $porto_id ?>" name="porto_id" value="<?= $porto_id ?>">
-                              </div>
-                              <div class="form-group">
-                                <label for="kategori_porto<?= $porto_id ?>" style="color: black;">Kategori:</label>
-                                <select class="form-control" id="kategori_porto<?= $porto_id ?>" name="kategori_id">
-                                  <?php
-                                  $sql_kategori_portofolio = "SELECT kategori_id, kategori_porto FROM kategori_portofolio";
-                                  $query_kategori_portofolio = mysqli_query($koneksi, $sql_kategori_portofolio);
-                                  while ($kategori = mysqli_fetch_assoc($query_kategori_portofolio)) {
-                                    $selected = ($kategori['kategori_id'] == $row['kategori_id']) ? "selected" : "";
-                                    echo "<option value='{$kategori['kategori_id']}' {$selected}>{$kategori['kategori_porto']}</option>";
-                                  }
-                                  ?>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label for="lokasi_img<?= $porto_id ?>" style="color: black;">Ganti Gambar:</label>
-                                <input type="file" class="form-control" id="lokasi_img<?= $porto_id ?>" name="lokasi_img" value="<?= $lokasi_img ?>">
-                              </div>
-                              <div class="form-group">
-                                <label for="nama_kegiatan<?= $porto_id ?>" style="color: black;">Nama Kegiatan:</label>
-                                <input type="text" class="form-control" id="nama_kegiatan<?= $porto_id ?>" name="nama_kegiatan" value="<?= $nama_kegiatan ?>">
-                              </div>
-                              <button type="submit" class="btn btn-primary">Simpan</button>
-                            </form>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $no = $offset + 1;
+                    while ($row = mysqli_fetch_assoc($query_portofolio_page_porto)) {
+                      $porto_id = $row['porto_id'];
+                      $kategori_porto = $row['kategori_porto'];
+                      $nama_kegiatan = $row['nama_kegiatan'];
+                      $lokasi_img = $row['lokasi_img'];
+                    ?>
+                      <tr>
+                        <td><?= $no ?></td>
+                        <td><?= $kategori_porto ?></td>
+                        <td><?= $nama_kegiatan ?></td>
+                        <!-- <td><?= $lokasi_img ?></td> -->
+                        <td class="text-center">
+                          <form action="" method="POST">
+                            <input type="hidden" name="porto_id" value="<?= $porto_id ?>">
+                            <button type="submit" name="hapus_portofolio" class="btn btn-danger">Hapus</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPortofolioModal<?= $porto_id ?>">Edit</button>
+                          </form>
+                        </td>
+                      </tr>
+                      <!-- Modal Edit -->
+                      <div class="modal fade" id="editPortofolioModal<?= $porto_id ?>" tabindex="-1" role="dialog" aria-labelledby="editPortofolioModalLabel<?= $porto_id ?>" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" style="color: black;" id="editPortofolioModalLabel<?= $porto_id ?>">Edit Portofolio</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- Form untuk edit data portofolio -->
+                              <form action="proses_edit_portofolio.php" method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                  <input type="hidden" class="form-control-file" id="porto_id<?= $porto_id ?>" name="porto_id" value="<?= $porto_id ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="kategori_porto<?= $porto_id ?>" style="color: black;">Kategori:</label>
+                                  <select class="form-control" id="kategori_porto<?= $porto_id ?>" name="kategori_id">
+                                    <?php
+                                    $sql_kategori_portofolio = "SELECT kategori_id, kategori_porto FROM kategori_portofolio";
+                                    $query_kategori_portofolio = mysqli_query($koneksi, $sql_kategori_portofolio);
+                                    while ($kategori = mysqli_fetch_assoc($query_kategori_portofolio)) {
+                                      $selected = ($kategori['kategori_id'] == $row['kategori_id']) ? "selected" : "";
+                                      echo "<option value='{$kategori['kategori_id']}' {$selected}>{$kategori['kategori_porto']}</option>";
+                                    }
+                                    ?>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="lokasi_img<?= $porto_id ?>" style="color: black;">Ganti Gambar:</label>
+                                  <input type="file" class="form-control" id="lokasi_img<?= $porto_id ?>" name="lokasi_img" value="<?= $lokasi_img ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="nama_kegiatan<?= $porto_id ?>" style="color: black;">Nama Kegiatan:</label>
+                                  <input type="text" class="form-control" id="nama_kegiatan<?= $porto_id ?>" name="nama_kegiatan" value="<?= $nama_kegiatan ?>">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                              </form>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  <?php
-                    $no++;
-                  }
-                  if ($no === 1) {
-                    echo "<tr><td colspan='5'>Tidak ada data portofolio</td></tr>";
-                  }
-                  ?>
-                </tbody>
-              </table>
-            </div>
+                    <?php
+                      $no++;
+                    }
+                    if ($no === 1) {
+                      echo "<tr><td colspan='5'>Tidak ada data portofolio</td></tr>";
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <?php
             // Tampilkan nomor/next halaman jika total halaman lebih dari 1
@@ -1195,13 +1206,16 @@
         $query_hapus_portofolio = mysqli_query($koneksi, $sql_hapus_portofolio);
         if ($query_hapus_portofolio) {
           // Redirect atau perbarui halaman setelah hapus berhasil
-          echo '<script>alert("Portofolio berhasil dihapus."); window.location.href = document.referrer;</script>';
+          $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+          echo '<script>alert("Portofolio berhasil dihapus."); window.location.href = "' . $referrer . '";</script>';
           exit;
         } else {
-          echo '<script>alert("Terjadi kesalahan saat menghapus portofolio."); window.location.href = document.referrer;</script>';
+          $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+          echo '<script>alert("Terjadi kesalahan saat menghapus portofolio."); window.location.href = "' . $referrer . '";</script>';
         }
       }
       ?>
+
 
       <!-- Modal Tambah Portofolio -->
       <div class="modal fade" id="tambahportofolio_sectionModal" tabindex="-1" role="dialog" aria-labelledby="tambahPortofolioModalLabel" aria-hidden="true">
