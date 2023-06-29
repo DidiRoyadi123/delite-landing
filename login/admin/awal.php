@@ -509,7 +509,7 @@
                 </tr>
               </tbody>
             </table>
-            <div class="responsive-table-container">
+            </div>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
