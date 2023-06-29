@@ -38,6 +38,11 @@
     .small-box-footer {
       margin-top: auto;
     }
+
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+    }
   </style>
   <section class="content-header">
     <h1>
@@ -537,6 +542,13 @@
             include_once "../sambungan.php";
             $sql_service = "SELECT id_service, gambar_service, judul_service, caption_service FROM services";
             $query_service = mysqli_query($koneksi, $sql_service);
+            $total_items_service = mysqli_num_rows($query_service);
+            $items_per_page_service = 3;
+            $total_pages_service = ceil($total_items_service / $items_per_page_service);
+            $current_page_service = isset($_GET['page_service']) ? $_GET['page_service'] : 1;
+            $offset_service = ($current_page_service - 1) * $items_per_page_service;
+            $sql_service_page = "SELECT * FROM services LIMIT $offset_service, $items_per_page_service";
+            $query_service_page = mysqli_query($koneksi, $sql_service_page);
             ?>
             <div class="tabelService">
               <table class="table table-bordered">
@@ -549,7 +561,8 @@
                 </thead>
                 <tbody>
                   <?php
-                  for ($no = 1; $fetch_service = mysqli_fetch_assoc($query_service); $no++) {
+                  $no = $offset_service + 1;
+                  while ($fetch_service = mysqli_fetch_assoc($query_service_page)) {
                     $id_service = $fetch_service['id_service'];
                     $judul_service = $fetch_service['judul_service'];
                     $caption_service = $fetch_service['caption_service'];
@@ -579,7 +592,7 @@
                             <!-- Form untuk edit data service -->
                             <form action="proses_edit_service.php" method="POST" enctype="multipart/form-data">
                               <div class="form-group">
-                                <input type="hidden" class="form-control-file" id="id_service<?= $id_service ?>" name="id_service">
+                                <input type="hidden" class="form-control-file" id="id_service<?= $id_service ?>" name="id_service" value="<?= $id_service ?>">
                               </div>
                               <div class="form-group">
                                 <label for="gambarServiceEdit<?= $id_service ?>" style="color: black;">Gambar Service:</label>
@@ -600,6 +613,7 @@
                       </div>
                     </div>
                   <?php
+                    $no++;
                   }
                   if ($no === 1) {
                     echo "<tr><td colspan='3'>Tidak ada service</td></tr>";
@@ -609,9 +623,25 @@
               </table>
             </div>
           </div>
+          <?php if ($total_pages_service > 1) : ?>
+            <div class="pagination-container">
+              <ul class="pagination">
+                <?php if ($current_page_service > 1) : ?>
+                  <li class="page-item"><a class="page-link" href="?page_service=<?= $current_page_service - 1 ?>">Previous</a></li>
+                <?php endif; ?>
+                <?php for ($i = 1; $i <= $total_pages_service; $i++) : ?>
+                  <li class="page-item <?= $i == $current_page_service ? 'active' : '' ?>"><a class="page-link" href="?page_service=<?= $i ?>"><?= $i ?></a></li>
+                <?php endfor; ?>
+                <?php if ($current_page_service < $total_pages_service) : ?>
+                  <li class="page-item"><a class="page-link" href="?page_service=<?= $current_page_service + 1 ?>">Next</a></li>
+                <?php endif; ?>
+              </ul>
+            </div>
+          <?php endif; ?>
           <a href="#" class="small-box-footer" data-toggle="modal" data-target="#tambahserviceModal">Tambah service<i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
+
       <!-- HAPUS SERVICE -->
       <?php
       if (isset($_POST['hapus_service'])) {
@@ -669,6 +699,13 @@
             include_once "../sambungan.php";
             $sql_faq_section = "SELECT faq_id, pertanyaan_faq, jawaban_faq FROM faq_section";
             $query_faq_section = mysqli_query($koneksi, $sql_faq_section);
+            $total_items_faq = mysqli_num_rows($query_faq_section);
+            $items_per_page_faq = 3;
+            $total_pages_faq = ceil($total_items_faq / $items_per_page_faq);
+            $current_page_faq = isset($_GET['page_faq']) ? $_GET['page_faq'] : 1;
+            $offset_faq = ($current_page_faq - 1) * $items_per_page_faq;
+            $sql_faq_page = "SELECT * FROM faq_section LIMIT $offset_faq, $items_per_page_faq";
+            $query_faq_page = mysqli_query($koneksi, $sql_faq_page);
             ?>
             <div class="tabelfaq_section">
               <table class="table table-bordered">
@@ -681,7 +718,8 @@
                 </thead>
                 <tbody>
                   <?php
-                  for ($no = 1; $fetch_faq_section = mysqli_fetch_assoc($query_faq_section); $no++) {
+                  $no = $offset_faq + 1;
+                  while ($fetch_faq_section = mysqli_fetch_assoc($query_faq_page)) {
                     $id_faq_section = $fetch_faq_section['faq_id'];
                     $pertanyaan_faq_section = $fetch_faq_section['pertanyaan_faq'];
                     $jawaban_faq_section = $fetch_faq_section['jawaban_faq'];
@@ -728,6 +766,7 @@
                       </div>
                     </div>
                   <?php
+                    $no++;
                   }
                   if ($no === 1) {
                     echo "<tr><td colspan='3'>Tidak ada faq_section</td></tr>";
@@ -737,9 +776,25 @@
               </table>
             </div>
           </div>
+          <?php if ($total_pages_faq > 1) : ?>
+            <div class="pagination-container">
+              <ul class="pagination">
+                <?php if ($current_page_faq > 1) : ?>
+                  <li class="page-item"><a class="page-link" href="?page_faq=<?= $current_page_faq - 1 ?>">Previous</a></li>
+                <?php endif; ?>
+                <?php for ($i = 1; $i <= $total_pages_faq; $i++) : ?>
+                  <li class="page-item <?= $i == $current_page_faq ? 'active' : '' ?>"><a class="page-link" href="?page_faq=<?= $i ?>"><?= $i ?></a></li>
+                <?php endfor; ?>
+                <?php if ($current_page_faq < $total_pages_faq) : ?>
+                  <li class="page-item"><a class="page-link" href="?page_faq=<?= $current_page_faq + 1 ?>">Next</a></li>
+                <?php endif; ?>
+              </ul>
+            </div>
+          <?php endif; ?>
           <a href="#" class="small-box-footer" data-toggle="modal" data-target="#tambahfaq_sectionModal">Tambah FAQ<i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
+
       <!-- HAPUS faq -->
       <?php
       if (isset($_POST['hapus_faq_section'])) {
@@ -793,6 +848,13 @@
             include_once "../sambungan.php";
             $sql_kategori_portofolio = "SELECT kategori_id, kategori_porto FROM kategori_portofolio";
             $query_kategori_portofolio = mysqli_query($koneksi, $sql_kategori_portofolio);
+            $total_items_kategori = mysqli_num_rows($query_kategori_portofolio);
+            $items_per_page_kategori = 3;
+            $total_pages_kategori = ceil($total_items_kategori / $items_per_page_kategori);
+            $current_page_kategori = isset($_GET['page_kategori']) ? $_GET['page_kategori'] : 1;
+            $offset_kategori = ($current_page_kategori - 1) * $items_per_page_kategori;
+            $sql_kategori_page = "SELECT * FROM kategori_portofolio LIMIT $offset_kategori, $items_per_page_kategori";
+            $query_kategori_page = mysqli_query($koneksi, $sql_kategori_page);
             ?>
             <div class="tabelkategori_section">
               <table class="table table-bordered">
@@ -805,8 +867,8 @@
                 </thead>
                 <tbody>
                   <?php
-                  $no = 1;
-                  while ($fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio)) {
+                  $no = $offset_kategori + 1;
+                  while ($fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_page)) {
                     $kategori_id = $fetch_kategori_portofolio['kategori_id'];
                     $kategori_porto = $fetch_kategori_portofolio['kategori_porto'];
                   ?>
@@ -857,10 +919,38 @@
                 </tbody>
               </table>
             </div>
+            <?php
+            // Tampilkan nomor/next halaman jika total halaman lebih dari 1
+            if ($total_pages_kategori > 1) {
+            ?>
+              <div class="pagination-container">
+                <ul class="pagination">
+                  <?php
+                  // Tombol previous
+                  if ($current_page_kategori > 1) {
+                    echo '<li class="page-item"><a class="page-link" href="?page_kategori=' . ($current_page_kategori - 1) . '">Previous</a></li>';
+                  }
+
+                  // Tampilkan nomor halaman
+                  for ($i = 1; $i <= $total_pages_kategori; $i++) {
+                    echo '<li class="page-item ' . ($i == $current_page_kategori ? 'active' : '') . '"><a class="page-link" href="?page_kategori=' . $i . '">' . $i . '</a></li>';
+                  }
+
+                  // Tombol next
+                  if ($current_page_kategori < $total_pages_kategori) {
+                    echo '<li class="page-item"><a class="page-link" href="?page_kategori=' . ($current_page_kategori + 1) . '">Next</a></li>';
+                  }
+                  ?>
+                </ul>
+              </div>
+            <?php
+            }
+            ?>
           </div>
           <a href="#" class="small-box-footer" data-toggle="modal" data-target="#tambahkategori_sectionModal">Tambah kategori<i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
+
       <!-- HAPUS kategori portofolio -->
       <?php
       if (isset($_POST['hapus_kategori'])) {
@@ -902,6 +992,228 @@
       </div>
 
       <!-- PORTOFOLIO -->
+      <div class="col-lg-6 col-xs-6">
+        <div class="small-box bg-purple">
+          <div class="inner">
+            <p><strong>Portofolio</strong></p>
+
+            <?php
+            include_once "../sambungan.php";
+            $sql_portofolio = "SELECT p.porto_id, p.kategori_id, kp.kategori_porto, p.lokasi_img, p.nama_kegiatan
+                            FROM portofolio p
+                            INNER JOIN kategori_portofolio kp ON p.kategori_id = kp.kategori_id";
+            $query_portofolio = mysqli_query($koneksi, $sql_portofolio);
+
+            // Jumlah portofolio per halaman
+            $per_page_porto = 3;
+
+            // Hitung total portofolio
+            $total_portofolio = mysqli_num_rows($query_portofolio);
+
+            // Hitung total halaman
+            $total_pages = ceil($total_portofolio / $per_page_porto);
+
+            // Dapatkan halaman saat ini
+            $current_page_porto = isset($_GET['page_porto']) ? $_GET['page_porto'] : 1;
+
+            // Hitung offset
+            $offset = ($current_page_porto - 1) * $per_page_porto;
+
+            // Ambil data portofolio untuk halaman saat ini
+            $sql_portofolio_page_porto = "SELECT p.porto_id, p.kategori_id, kp.kategori_porto, p.lokasi_img, p.nama_kegiatan
+                            FROM portofolio p
+                            INNER JOIN kategori_portofolio kp ON p.kategori_id = kp.kategori_id
+                            LIMIT $offset, $per_page_porto";
+            $query_portofolio_page_porto = mysqli_query($koneksi, $sql_portofolio_page_porto);
+            ?>
+            <div class="tabelportofolio_section">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Kategori</th>
+                    <th>Nama Kegiatan</th>
+                    <!-- <th>Lokasi Image</th> -->
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $no = $offset + 1;
+                  while ($row = mysqli_fetch_assoc($query_portofolio_page_porto)) {
+                    $porto_id = $row['porto_id'];
+                    $kategori_porto = $row['kategori_porto'];
+                    $nama_kegiatan = $row['nama_kegiatan'];
+                    $lokasi_img = $row['lokasi_img'];
+                  ?>
+                    <tr>
+                      <td><?= $no ?></td>
+                      <td><?= $kategori_porto ?></td>
+                      <td><?= $nama_kegiatan ?></td>
+                      <!-- <td><?= $lokasi_img ?></td> -->
+                      <td class="text-center">
+                        <form action="" method="POST">
+                          <input type="hidden" name="porto_id" value="<?= $porto_id ?>">
+                          <button type="submit" name="hapus_portofolio" class="btn btn-danger">Hapus</button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPortofolioModal<?= $porto_id ?>">Edit</button>
+                        </form>
+                      </td>
+                    </tr>
+                    <!-- Modal Edit -->
+                    <div class="modal fade" id="editPortofolioModal<?= $porto_id ?>" tabindex="-1" role="dialog" aria-labelledby="editPortofolioModalLabel<?= $porto_id ?>" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" style="color: black;" id="editPortofolioModalLabel<?= $porto_id ?>">Edit Portofolio</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <!-- Form untuk edit data portofolio -->
+                            <form action="proses_edit_portofolio.php" method="POST" enctype="multipart/form-data">
+                              <div class="form-group">
+                                <input type="hidden" class="form-control-file" id="porto_id<?= $porto_id ?>" name="porto_id" value="<?= $porto_id ?>">
+                              </div>
+                              <div class="form-group">
+                                <label for="kategori_porto<?= $porto_id ?>" style="color: black;">Kategori:</label>
+                                <select class="form-control" id="kategori_porto<?= $porto_id ?>" name="kategori_id">
+                                  <?php
+                                  $sql_kategori_portofolio = "SELECT kategori_id, kategori_porto FROM kategori_portofolio";
+                                  $query_kategori_portofolio = mysqli_query($koneksi, $sql_kategori_portofolio);
+                                  while ($kategori = mysqli_fetch_assoc($query_kategori_portofolio)) {
+                                    $selected = ($kategori['kategori_id'] == $row['kategori_id']) ? "selected" : "";
+                                    echo "<option value='{$kategori['kategori_id']}' {$selected}>{$kategori['kategori_porto']}</option>";
+                                  }
+                                  ?>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="lokasi_img<?= $porto_id ?>" style="color: black;">Ganti Gambar:</label>
+                                <input type="file" class="form-control" id="lokasi_img<?= $porto_id ?>" name="lokasi_img" value="<?= $lokasi_img ?>">
+                              </div>
+                              <div class="form-group">
+                                <label for="nama_kegiatan<?= $porto_id ?>" style="color: black;">Nama Kegiatan:</label>
+                                <input type="text" class="form-control" id="nama_kegiatan<?= $porto_id ?>" name="nama_kegiatan" value="<?= $nama_kegiatan ?>">
+                              </div>
+                              <button type="submit" class="btn btn-primary">Simpan</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <?php
+                    $no++;
+                  }
+                  if ($no === 1) {
+                    echo "<tr><td colspan='5'>Tidak ada data portofolio</td></tr>";
+                  }
+                  ?>
+                </tbody>
+              </table>
+            </div>
+            <?php
+            // Tampilkan nomor/next halaman jika total halaman lebih dari 1
+            if ($total_pages > 1) {
+            ?>
+              <div class="pagination-container">
+                <ul class="pagination">
+                  <?php
+                  // Tombol previous
+                  if ($current_page_porto > 1) {
+                    echo '<li class="page-item"><a class="page-link" href="?page_porto=' . ($current_page_porto - 1) . '">Previous</a></li>';
+                  }
+
+                  // Tampilkan nomor halaman
+                  for ($i = 1; $i <= $total_pages; $i++) {
+                    echo '<li class="page-item ' . ($i == $current_page_porto ? 'active' : '') . '"><a class="page-link" href="?page_porto=' . $i . '">' . $i . '</a></li>';
+                  }
+
+                  // Tombol next
+                  if ($current_page_porto < $total_pages) {
+                    echo '<li class="page-item"><a class="page-link" href="?page_porto=' . ($current_page_porto + 1) . '">Next</a></li>';
+                  }
+                  ?>
+                </ul>
+              </div>
+            <?php
+            }
+            ?>
+          </div>
+          <a href="#" class="small-box-footer" data-toggle="modal" data-target="#tambahportofolio_sectionModal">Tambah portofolio<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- Hapus portofolio -->
+      <?php
+      if (isset($_POST['hapus_portofolio'])) {
+        $porto_id = $_POST['porto_id'];
+
+        // Dapatkan lokasi gambar yang akan dihapus
+        $sql_get_lokasi_img = "SELECT lokasi_img FROM portofolio WHERE porto_id = '$porto_id'";
+        $query_get_lokasi_img = mysqli_query($koneksi, $sql_get_lokasi_img);
+        $lokasi_img = mysqli_fetch_assoc($query_get_lokasi_img)['lokasi_img'];
+
+        // Hapus file gambar jika ada
+        if (!empty($lokasi_img)) {
+          if (file_exists($lokasi_img)) {
+            unlink($lokasi_img);
+          }
+        }
+
+        // Lakukan proses hapus portofolio sesuai dengan porto_id yang diterima
+        $sql_hapus_portofolio = "DELETE FROM portofolio WHERE porto_id = '$porto_id'";
+        $query_hapus_portofolio = mysqli_query($koneksi, $sql_hapus_portofolio);
+        if ($query_hapus_portofolio) {
+          // Redirect atau perbarui halaman setelah hapus berhasil
+          echo '<script>alert("Portofolio berhasil dihapus."); window.location.href = document.referrer;</script>';
+          exit;
+        } else {
+          echo '<script>alert("Terjadi kesalahan saat menghapus portofolio."); window.location.href = document.referrer;</script>';
+        }
+      }
+      ?>
+
+      <!-- Modal Tambah Portofolio -->
+      <div class="modal fade" id="tambahportofolio_sectionModal" tabindex="-1" role="dialog" aria-labelledby="tambahPortofolioModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tambahPortofolioModalLabel">Tambah Portofolio</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Form untuk tambah portofolio -->
+              <form action="proses_tambah_portofolio.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="kategori_porto">Kategori:</label>
+                  <select class="form-control" id="kategori_porto" name="kategori_id">
+                    <?php
+                    $sql_kategori_portofolio = "SELECT kategori_id, kategori_porto FROM kategori_portofolio";
+                    $query_kategori_portofolio = mysqli_query($koneksi, $sql_kategori_portofolio);
+                    while ($fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio)) {
+                      $kategori_id = $fetch_kategori_portofolio['kategori_id'];
+                      $kategori_porto = $fetch_kategori_portofolio['kategori_porto'];
+                      echo '<option value="' . $kategori_id . '">' . $kategori_porto . '</option>';
+                    }
+                    ?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="lokasi_img">Pilih Gambar:</label>
+                  <input type="file" class="form-control-file" id="lokasi_img" name="lokasi_img" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                  <label for="nama_kegiatan">Nama Kegiatan:</label>
+                  <input type="text" class="form-control" id="nama_kegiatan" name="nama_kegiatan" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
 
