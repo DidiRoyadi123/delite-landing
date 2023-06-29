@@ -43,6 +43,26 @@
       display: flex;
       justify-content: center;
     }
+
+    .responsive-table-container {
+      overflow-x: auto;
+    }
+
+    .table-responsive {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .table {
+      width: 100%;
+      white-space: nowrap;
+    }
+
+    .table th,
+    .table td {
+      white-space: nowrap;
+    }
   </style>
   <section class="content-header">
     <h1>
@@ -551,6 +571,7 @@
             $query_service_page = mysqli_query($koneksi, $sql_service_page);
             ?>
             <div class="tabelService">
+            <div class="responsive-table-container">
               <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -622,12 +643,13 @@
                 </tbody>
               </table>
             </div>
+            </div>
           </div>
           <?php if ($total_pages_service > 1) : ?>
             <div class="pagination-container">
               <ul class="pagination">
                 <?php if ($current_page_service > 1) : ?>
-                  <li class="page-item"><a class="page-link" href="?page_service=<?= $current_page_service - 1 ?>">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="?page_service=<?= $current_page_service - 1 ?>">Back</a></li>
                 <?php endif; ?>
                 <?php for ($i = 1; $i <= $total_pages_service; $i++) : ?>
                   <li class="page-item <?= $i == $current_page_service ? 'active' : '' ?>"><a class="page-link" href="?page_service=<?= $i ?>"><?= $i ?></a></li>
@@ -708,6 +730,7 @@
             $query_faq_page = mysqli_query($koneksi, $sql_faq_page);
             ?>
             <div class="tabelfaq_section">
+            <div class="responsive-table-container">
               <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -775,12 +798,13 @@
                 </tbody>
               </table>
             </div>
+            </div>
           </div>
           <?php if ($total_pages_faq > 1) : ?>
             <div class="pagination-container">
               <ul class="pagination">
                 <?php if ($current_page_faq > 1) : ?>
-                  <li class="page-item"><a class="page-link" href="?page_faq=<?= $current_page_faq - 1 ?>">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="?page_faq=<?= $current_page_faq - 1 ?>">Back</a></li>
                 <?php endif; ?>
                 <?php for ($i = 1; $i <= $total_pages_faq; $i++) : ?>
                   <li class="page-item <?= $i == $current_page_faq ? 'active' : '' ?>"><a class="page-link" href="?page_faq=<?= $i ?>"><?= $i ?></a></li>
@@ -857,6 +881,7 @@
             $query_kategori_page = mysqli_query($koneksi, $sql_kategori_page);
             ?>
             <div class="tabelkategori_section">
+            <div class="responsive-table-container">
               <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -919,6 +944,7 @@
                 </tbody>
               </table>
             </div>
+            </div>
             <?php
             // Tampilkan nomor/next halaman jika total halaman lebih dari 1
             if ($total_pages_kategori > 1) {
@@ -926,9 +952,9 @@
               <div class="pagination-container">
                 <ul class="pagination">
                   <?php
-                  // Tombol previous
+                  // Tombol Back
                   if ($current_page_kategori > 1) {
-                    echo '<li class="page-item"><a class="page-link" href="?page_kategori=' . ($current_page_kategori - 1) . '">Previous</a></li>';
+                    echo '<li class="page-item"><a class="page-link" href="?page_kategori=' . ($current_page_kategori - 1) . '">Back</a></li>';
                   }
 
                   // Tampilkan nomor halaman
@@ -1027,6 +1053,7 @@
             $query_portofolio_page_porto = mysqli_query($koneksi, $sql_portofolio_page_porto);
             ?>
             <div class="tabelportofolio_section">
+            <div class="responsive-table-container">
               <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -1112,6 +1139,7 @@
                 </tbody>
               </table>
             </div>
+            </div>
             <?php
             // Tampilkan nomor/next halaman jika total halaman lebih dari 1
             if ($total_pages > 1) {
@@ -1119,9 +1147,9 @@
               <div class="pagination-container">
                 <ul class="pagination">
                   <?php
-                  // Tombol previous
+                  // Tombol Back
                   if ($current_page_porto > 1) {
-                    echo '<li class="page-item"><a class="page-link" href="?page_porto=' . ($current_page_porto - 1) . '">Previous</a></li>';
+                    echo '<li class="page-item"><a class="page-link" href="?page_porto=' . ($current_page_porto - 1) . '">Back</a></li>';
                   }
 
                   // Tampilkan nomor halaman
