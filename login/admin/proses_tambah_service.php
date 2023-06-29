@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Pindahkan gambar ke folder tujuan
   if (move_uploaded_file($lokasiSementara, $lokasiTujuan)) {
     // Simpan informasi gambar ke dalam database
-    $sql = "INSERT INTO service (gambar_service, judul_service, caption_service) VALUES ('$lokasiTujuan', '$judulServiceBaru', '$captionServiceBaru')";
+    $sql = "INSERT INTO services (gambar_service, judul_service, caption_service) VALUES ('$lokasiTujuan', '$judulServiceBaru', '$captionServiceBaru')";
     if (mysqli_query($koneksi, $sql)) {
         echo '<script>alert("berhasil tambah service"); window.location.href = document.referrer;</script>';
     } else {
