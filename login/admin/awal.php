@@ -488,6 +488,7 @@
             $query_customer = mysqli_query($koneksi, $sql_customer);
             $fetch_customer = mysqli_fetch_assoc($query_customer);
             ?>
+            <div class="responsive-table-container">
             <table class="table table-bordered">
               <tbody>
                 <tr>
@@ -508,6 +509,7 @@
                 </tr>
               </tbody>
             </table>
+            <div class="responsive-table-container">
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
