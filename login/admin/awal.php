@@ -668,23 +668,23 @@
 
       <!-- HAPUS SERVICE -->
       <?php
-if (isset($_POST['hapus_service'])) {
-  $id_service = $_POST['id_service'];
+      if (isset($_POST['hapus_service'])) {
+        $id_service = $_POST['id_service'];
 
-  // Lakukan proses hapus service sesuai dengan id_service yang diterima
-  $sql_hapus_service = "DELETE FROM services WHERE id_service = '$id_service'";
-  $query_hapus_service = mysqli_query($koneksi, $sql_hapus_service);
-  if ($query_hapus_service) {
-    // Redirect atau perbarui halaman setelah hapus berhasil
-    $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
-    echo '<script>alert("Service berhasil dihapus."); window.location.href = "'.$referrer.'";</script>';
-    exit;
-  } else {
-    $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
-    echo '<script>alert("Terjadi kesalahan saat menghapus service."); window.location.href = "'.$referrer.'";</script>';
-  }
-}
-?>
+        // Lakukan proses hapus service sesuai dengan id_service yang diterima
+        $sql_hapus_service = "DELETE FROM services WHERE id_service = '$id_service'";
+        $query_hapus_service = mysqli_query($koneksi, $sql_hapus_service);
+        if ($query_hapus_service) {
+          // Redirect atau perbarui halaman setelah hapus berhasil
+          $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+          echo '<script>alert("Service berhasil dihapus."); window.location.href = "' . $referrer . '";</script>';
+          exit;
+        } else {
+          $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+          echo '<script>alert("Terjadi kesalahan saat menghapus service."); window.location.href = "' . $referrer . '";</script>';
+        }
+      }
+      ?>
 
       <!-- Modal Tambah Service -->
       <div class="modal fade" id="tambahserviceModal" tabindex="-1" role="dialog" aria-labelledby="tambahserviceModalLabel" aria-hidden="true">
@@ -827,23 +827,23 @@ if (isset($_POST['hapus_service'])) {
 
       <!-- HAPUS faq -->
       <?php
-if (isset($_POST['hapus_faq_section'])) {
-  $id_faq_section = $_POST['id_faq_section'];
+      if (isset($_POST['hapus_faq_section'])) {
+        $id_faq_section = $_POST['id_faq_section'];
 
-  // Lakukan proses hapus faq sesuai dengan id_faq_section yang diterima
-  $sql_hapus_faq_section = "DELETE FROM faq_section WHERE faq_id = '$id_faq_section'";
-  $query_hapus_faq_section = mysqli_query($koneksi, $sql_hapus_faq_section);
-  if ($query_hapus_faq_section) {
-    // Redirect atau perbarui halaman setelah hapus berhasil
-    $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
-    echo '<script>alert("FAQ berhasil dihapus."); window.location.href = "'.$referrer.'";</script>';
-    exit;
-  } else {
-    $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
-    echo '<script>alert("Terjadi kesalahan saat menghapus FAQ."); window.location.href = "'.$referrer.'";</script>';
-  }
-}
-?>
+        // Lakukan proses hapus faq sesuai dengan id_faq_section yang diterima
+        $sql_hapus_faq_section = "DELETE FROM faq_section WHERE faq_id = '$id_faq_section'";
+        $query_hapus_faq_section = mysqli_query($koneksi, $sql_hapus_faq_section);
+        if ($query_hapus_faq_section) {
+          // Redirect atau perbarui halaman setelah hapus berhasil
+          $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+          echo '<script>alert("FAQ berhasil dihapus."); window.location.href = "' . $referrer . '";</script>';
+          exit;
+        } else {
+          $referrer = rtrim(strtok($_SERVER['HTTP_REFERER'], '?'), '/');
+          echo '<script>alert("Terjadi kesalahan saat menghapus FAQ."); window.location.href = "' . $referrer . '";</script>';
+        }
+      }
+      ?>
 
       <!-- Modal Tambah FAQ -->
       <div class="modal fade" id="tambahfaq_sectionModal" tabindex="-1" role="dialog" aria-labelledby="tambahfaq_sectionModalLabel" aria-hidden="true">
@@ -1216,7 +1216,6 @@ if (isset($_POST['hapus_faq_section'])) {
       }
       ?>
 
-
       <!-- Modal Tambah Portofolio -->
       <div class="modal fade" id="tambahportofolio_sectionModal" tabindex="-1" role="dialog" aria-labelledby="tambahPortofolioModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -1259,11 +1258,178 @@ if (isset($_POST['hapus_faq_section'])) {
         </div>
       </div>
 
+      <!-- TEAM AREA  -->
+      <div class="col-lg-6 col-xs-6">
+    <div class="small-box bg-light-blue">
+        <div class="inner">
+            <p><strong>TEAM AREA</strong></p>
+
+            <?php
+            $sql_team_area = "SELECT id_team_area, lokasi_img, nama_team, jabatan_team FROM team_area";
+            $query_team_area = mysqli_query($koneksi, $sql_team_area);
+            $total_items_team = mysqli_num_rows($query_team_area);
+            $items_per_page_team = 3;
+            $total_pages_team = ceil($total_items_team / $items_per_page_team);
+            $current_page_team = isset($_GET['page_team']) ? $_GET['page_team'] : 1;
+            $offset_team = ($current_page_team - 1) * $items_per_page_team;
+            $sql_team_page = "SELECT * FROM team_area LIMIT $offset_team, $items_per_page_team";
+            $query_team_page = mysqli_query($koneksi, $sql_team_page);
+            ?>
+
+            <div class="tabelteam_area_section">
+                <div class="responsive-table-container">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Team</th>
+                                <th>Jabatan Team</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = $offset_team + 1;
+                            while ($row = mysqli_fetch_assoc($query_team_page)) {
+                                $id_team_area = $row['id_team_area'];
+                                $nama_team = $row['nama_team'];
+                                $jabatan_team = $row['jabatan_team'];
+                            ?>
+                                <tr>
+                                    <td><?= $no ?></td>
+                                    <td><?= $nama_team ?></td>
+                                    <td><?= $jabatan_team ?></td>
+                                    <td class="text-center">
+                                        <form action="" method="POST">
+                                            <input type="hidden" name="id_team_area" value="<?= $id_team_area ?>">
+                                            <button type="submit" name="hapus_team_area" class="btn btn-danger">Hapus</button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editTeamModal<?= $id_team_area ?>">Edit</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <!-- Modal Edit -->
+                                <div class="modal fade" id="editTeamModal<?= $id_team_area ?>" tabindex="-1" role="dialog" aria-labelledby="editTeamModalLabel<?= $id_team_area ?>" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" style="color: black;" id="editTeamModalLabel<?= $id_team_area ?>">Edit Team</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!-- Form untuk edit data team -->
+                                                <form action="proses_edit_team_area.php" method="POST" enctype="multipart/form-data">
+                                                    <div class="form-group">
+                                                        <input type="hidden" class="form-control-file" id="id_team_area<?= $id_team_area ?>" name="id_team_area" value="<?= $id_team_area ?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="lokasi_img<?= $id_team_area ?>" style="color: black;">Ganti Gambar:</label>
+                                                        <input type="file" class="form-control" id="lokasi_img<?= $id_team_area ?>" name="lokasi_img" value="<?= $lokasi_img ?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="nama_team<?= $id_team_area ?>" style="color: black;">Nama Team:</label>
+                                                        <input type="text" class="form-control" id="nama_team<?= $id_team_area ?>" name="nama_team" value="<?= $nama_team ?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="jabatan_team<?= $id_team_area ?>" style="color: black;">Jabatan Team:</label>
+                                                        <input type="text" class="form-control" id="jabatan_team<?= $id_team_area ?>" name="jabatan_team" value="<?= $jabatan_team ?>">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                                $no++;
+                            }
+                            if ($no === 1) {
+                                echo "<tr><td colspan='5'>Tidak ada data team</td></tr>";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <?php if ($total_pages_team > 1) : ?>
+            <div class="pagination-container">
+                <ul class="pagination">
+                    <?php if ($current_page_team > 1) : ?>
+                        <li class="page-item"><a class="page-link" href="?page_team=<?= $current_page_team - 1 ?>">Back</a></li>
+                    <?php endif; ?>
+                    <?php for ($i = 1; $i <= $total_pages_team; $i++) : ?>
+                        <li class="page-item <?= $i == $current_page_team ? 'active' : '' ?>"><a class="page-link" href="?page_team=<?= $i ?>"><?= $i ?></a></li>
+                    <?php endfor; ?>
+                    <?php if ($current_page_team < $total_pages_team) : ?>
+                        <li class="page-item"><a class="page-link" href="?page_team=<?= $current_page_team + 1 ?>">Next</a></li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+        <a href="#" class="small-box-footer" data-toggle="modal" data-target="#tambahTeamAreaModal">Tambah Team<i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+
+      <!-- Hapus team area -->
+      <?php
+      if (isset($_POST['hapus_team_area'])) {
+        $id_team_area = $_POST['id_team_area'];
+        // Lakukan proses hapus team_area sesuai dengan id_team_area yang diterima
+        $sql_hapus_team_area = "DELETE FROM team_area WHERE id_team_area = '$id_team_area'";
+        $query_hapus_team_area = mysqli_query($koneksi, $sql_hapus_team_area);
+        if ($query_hapus_team_area) {
+          // Redirect atau perbarui halaman setelah hapus berhasil
+          echo '<script>alert("Data team berhasil dihapus."); window.location.href = document.referrer;</script>';
+          exit;
+        } else {
+          echo '<script>alert("Terjadi kesalahan saat menghapus data team."); window.location.href = document.referrer;</script>';
+        }
+      }
+      ?>
+      <!-- Modal Tambah Team Area -->
+      <div class="modal fade" id="tambahTeamAreaModal" tabindex="-1" role="dialog" aria-labelledby="tambahTeamAreaModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tambahTeamAreaModalLabel">Tambah Team Area</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Form tambah team area -->
+              <form action="proses_tambah_team_area.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="nama_team">Nama Team:</label>
+                  <input type="text" class="form-control" id="nama_team" name="nama_team" required>
+                </div>
+                <div class="form-group">
+                  <label for="jabatan_team">Jabatan Team:</label>
+                  <input type="text" class="form-control" id="jabatan_team" name="jabatan_team" required>
+                </div>
+                <div class="form-group">
+                  <label for="lokasi_img">Pilih Gambar:</label>
+                  <p>(Usahakan menggunakan ukuran 180x180)</p>
+                  <input type="file" class="form-control-file" id="lokasi_img" name="lokasi_img" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Tambah</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
 
 
+</div>
 
 
 
-    <?php include "bawah.php"; ?>
+
+
+
+<?php include "bawah.php"; ?>
