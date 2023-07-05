@@ -596,7 +596,7 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
       </div>
       <!-- /End Team Area -->
       <!-- About Agency Area -->
-      <div class="about-agency section-padding">
+      <!-- <div class="about-agency section-padding">
          <div class="container">
             <div class="row">
                <div class="col-md-6 col-sm-12">
@@ -609,7 +609,7 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
                </div>
             </div>
          </div>
-      </div>
+      </div> -->
       <!-- /End About Agency Area -->
       <!-- Pricing  Area -->
       <div class="pricing-area section-padding" data-scroll-index="3">
@@ -1125,10 +1125,6 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
                         <h2 class="widget-title">About us</h2>
                         <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis trud exercitation ullamco laboris.</p>
                         <ul>
-                           <li>
-                              <i class="fa fa-map-o"></i>
-                              <p>2750 Quadra Street Victoria, USA</p>
-                           </li>
                            <li>
                               <i class="fa fa-envelope-o"></i>
                               <p><?= $email_kontak ?></p>
