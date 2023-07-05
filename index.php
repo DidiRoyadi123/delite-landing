@@ -49,6 +49,11 @@ $fetch_faq_section = mysqli_fetch_assoc($query_faq_section);
 $sql_kategori_portofolio = "SELECT kategori_id, kategori_porto FROM kategori_portofolio";
 $query_kategori_portofolio = mysqli_query($koneksi, $sql_kategori_portofolio);
 $fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
+
+$sql_team_area = "SELECT * FROM team_area";
+$query_team_area = mysqli_query($koneksi, $sql_team_area);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -80,6 +85,18 @@ $fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
          .logo {
             width: 30% !important;
          }
+      }
+
+      /* @ media screen tablet */
+      @media screen and (min-width: 600px) and (max-width: 1024px) {
+         .logo {
+            width: 50% !important;
+         }
+      }
+
+      .sticky #mobile-menu .slicknav_btn {
+         padding: 10px 20px;
+         padding-top: 6%;
       }
 
       .sticky .logo a img {
@@ -188,24 +205,25 @@ $fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
       .btn-link {
          padding: 0;
       }
+
       /* img portofolio */
       .single-portfolio {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
 
-.img-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 380px;
-}
+      .img-wrapper {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 380px;
+      }
 
-.img-wrapper img {
-  max-width: 100%;
-  max-height: 100%;
-}
+      .img-wrapper img {
+         max-width: 100%;
+         max-height: 100%;
+      }
 
       /* end img portofolio */
    </style>
@@ -501,7 +519,7 @@ $fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
                   $lokasi_img = str_replace('../../', '', $row['lokasi_img']);
                ?>
                   <div class="single-portfolio grid-item <?= $kategori_porto ?>" style="max-width: 70%; height: 380px;">
-                     <img src="<?= $lokasi_img ?>" alt="" >
+                     <img src="<?= $lokasi_img ?>" alt="">
                      <div class="portfolio-wrapper">
                         <div class="portfolio-content">
                            <h3><?= $nama_kegiatan ?></h3>
@@ -514,12 +532,15 @@ $fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
                ?>
             </div>
 
-            
+
          </div>
       </div>
       <!-- /End Portfolio Area-->
+
+
+      <!-- DIHILANGKAN -->
       <!-- Call To Action Area-->
-      <div class="cta-area">
+      <!-- <div class="cta-area">
          <div class="container">
             <div class="row">
                <div class="col-md-9 col-sm-12">
@@ -534,71 +555,42 @@ $fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
                </div>
             </div>
          </div>
-      </div>
+      </div> -->
       <!-- /End Call To Action Area-->
+
+
       <!-- Team Area -->
       <div class="team-area">
          <div class="container">
             <div class="row">
                <div class="col-md-8 offset-md-2">
                   <div class="section-title text-center">
-                     <h2>Our Expert Team Member</h2>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim ad minim.</p>
+                     <h2>Our Team Member</h2>
                   </div>
                </div>
             </div>
             <div class="row">
                <!-- single team -->
-               <div class="col-md-4">
-                  <div class="single-team">
-                     <img src="assets/img/team1.png" alt="">
-                     <h2>Mark Parker</h2>
-                     <p>founder</p>
-                     <div class="tem-social">
-                        <ul>
-                           <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                           <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                           <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                           <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
+               <?php
+               while ($team_area = mysqli_fetch_assoc($query_team_area)) {
+                  $nama_team = $team_area['nama_team'];
+                  $jabatan_team = $team_area['jabatan_team'];
+                  $lokasi_img = str_replace("../../", "", $team_area['lokasi_img']);
+               ?>
+
+                  <div class="col-md-4">
+                     <div class="single-team" style="max-height: 380px;">
+                        <img src="<?php echo $lokasi_img; ?>" style="max-height: 200px;" alt="">
+                        <h2><?php echo $nama_team; ?></h2>
+                        <p><?php echo $jabatan_team; ?></p>
                      </div>
                   </div>
-               </div>
-               <!-- single team -->
-               <!-- single team -->
-               <div class="col-md-4">
-                  <div class="single-team">
-                     <img src="assets/img/team2.png" alt="">
-                     <h2>robert brown</h2>
-                     <p>web designer</p>
-                     <div class="tem-social">
-                        <ul>
-                           <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                           <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                           <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                           <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <!-- single team -->
-               <!-- single team -->
-               <div class="col-md-4">
-                  <div class="single-team">
-                     <img src="assets/img/team3.png" alt="">
-                     <h2>mustafa kamal</h2>
-                     <p>XI/UX Designer</p>
-                     <div class="tem-social">
-                        <ul>
-                           <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                           <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                           <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                           <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <!-- single team -->
+
+               <?php
+               }
+               ?>
+
+
             </div>
          </div>
       </div>
