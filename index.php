@@ -226,6 +226,13 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
       }
 
       /* end img portofolio */
+
+      .service-area,
+      .testimonial-area,
+      .contact-area,
+      .map-area {
+         padding: 100px 0;
+      }
    </style>
 </head>
 
@@ -262,10 +269,10 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
                            </li>
                            <li><a href="#" data-scroll-nav="1">Customer</a></li>
                            <li><a href="#" data-scroll-nav="2">Services</a></li>
-                           <li><a href="#" data-scroll-nav="3">Product</a></li>
-                           <li><a href="#" data-scroll-nav="4">Blog</a></li>
-                           <li><a href="#" data-scroll-nav="5">FAQ</a></li>
-                           <li><a href="#" data-scroll-nav="6">Contact</a></li>
+                           <!-- <li><a href="#" data-scroll-nav="3">Product</a></li> -->
+                           <li><a href="#" data-scroll-nav="3">Blog</a></li>
+                           <li><a href="#" data-scroll-nav="4">FAQ</a></li>
+                           <li><a href="#" data-scroll-nav="5">Contact</a></li>
                         </ul>
                      </nav>
                   </div>
@@ -537,210 +544,14 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
       </div>
       <!-- /End Portfolio Area-->
 
-
-      <!-- DIHILANGKAN -->
-      <!-- Call To Action Area-->
-      <!-- <div class="cta-area">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-9 col-sm-12">
-                  <div class="cta-text">
-                     <h2>Want to see our more creative work? </h2>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="cta-btn">
-                     <a class="viso-btn cta" href="#">contat us</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div> -->
-      <!-- /End Call To Action Area-->
-
-
-      <!-- Team Area -->
-      <div class="team-area">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-8 offset-md-2">
-                  <div class="section-title text-center">
-                     <h2>Our Team Member</h2>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <!-- single team -->
-               <?php
-               while ($team_area = mysqli_fetch_assoc($query_team_area)) {
-                  $nama_team = $team_area['nama_team'];
-                  $jabatan_team = $team_area['jabatan_team'];
-                  $lokasi_img = str_replace("../../", "", $team_area['lokasi_img']);
-               ?>
-
-                  <div class="col-md-4">
-                     <div class="single-team" style="max-height: 380px;">
-                        <img src="<?php echo $lokasi_img; ?>" style="max-height: 200px;" alt="">
-                        <h2><?php echo $nama_team; ?></h2>
-                        <p><?php echo $jabatan_team; ?></p>
-                     </div>
-                  </div>
-
-               <?php
-               }
-               ?>
-
-
-            </div>
-         </div>
-      </div>
-      <!-- /End Team Area -->
-      <!-- About Agency Area -->
-      <!-- <div class="about-agency section-padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-6 col-sm-12">
-                  <div class="agency-details">
-                     <h2>We help clients to create Digital amazing experience.</h2>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                     <a class="viso-btn discover" href="#">Case study</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div> -->
-      <!-- /End About Agency Area -->
-      <!-- Pricing  Area -->
-      <div class="pricing-area section-padding" data-scroll-index="3">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-5 col-sm-12">
-                  <div class="section-title effect text-left">
-                     <h2>our pricing plan</h2>
-                     <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididuntut.</p>
-                  </div>
-               </div>
-               <div class="col-md-4 offset-md-3 col-sm-12">
-                  <div class="price-swetch float-right m-t">
-                     <ul class="nav" id="myTab" role="tablist">
-                        <li>
-                           <a id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">yearly</a>
-                        </li>
-                        <li>
-                           <a class="active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">monthly</a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="tab-content">
-                  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                     <div class="row">
-                        <!-- single table-->
-                        <div class="col-md-4">
-                           <div class="pricing-table m-t">
-                              <div class="price-img">
-                                 <img src="assets/img/price-img1.png" alt="">
-                              </div>
-                              <div class="price-content">
-                                 <h2>Basic Plan</h2>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
-                                 <span class="rate basic">$10.00</span>
-                                 <a class="viso-btn price" href="#">purchase now</a>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- /single table-->
-                        <!-- single table-->
-                        <div class="col-md-4">
-                           <div class="pricing-table m-t">
-                              <div class="price-img">
-                                 <img src="assets/img/price-img2.png" alt="">
-                              </div>
-                              <div class="price-content">
-                                 <h2>standard Plan</h2>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
-                                 <span class="rate advance">$15.00</span>
-                                 <a class="viso-btn price" href="#">purchase now</a>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- /single table-->
-                        <!-- single table-->
-                        <div class="col-md-4">
-                           <div class="pricing-table m-t">
-                              <div class="price-img">
-                                 <img src="assets/img/price-img3.png" alt="">
-                              </div>
-                              <div class="price-content">
-                                 <h2>premium Plan</h2>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
-                                 <span class="rate pro">$20.00</span>
-                                 <a class="viso-btn price" href="#">purchase now</a>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- /single table-->
-                     </div>
-                  </div>
-                  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                     <div class="row">
-                        <!-- single table-->
-                        <div class="col-md-4">
-                           <div class="pricing-table m-t">
-                              <div class="price-img">
-                                 <img src="assets/img/price-img1.png" alt="">
-                              </div>
-                              <div class="price-content">
-                                 <h2>Basic Plan</h2>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
-                                 <span class="rate basic">$100.00</span>
-                                 <a class="viso-btn price" href="#">purchase now</a>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- /single table-->
-                        <!-- single table-->
-                        <div class="col-md-4">
-                           <div class="pricing-table m-t">
-                              <div class="price-img">
-                                 <img src="assets/img/price-img2.png" alt="">
-                              </div>
-                              <div class="price-content">
-                                 <h2>standard Plan</h2>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
-                                 <span class="rate advance">$150.00</span>
-                                 <a class="viso-btn price" href="#">purchase now</a>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- /single table-->
-                        <!-- single table-->
-                        <div class="col-md-4">
-                           <div class="pricing-table m-t">
-                              <div class="price-img">
-                                 <img src="assets/img/price-img3.png" alt="">
-                              </div>
-                              <div class="price-content">
-                                 <h2>premium Plan</h2>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
-                                 <span class="rate pro">$200.00</span>
-                                 <a class="viso-btn price" href="#">purchase now</a>
-                              </div>
-                           </div>
-                        </div>
-                        <!-- /single table-->
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- /End Pricing  Area -->
-      <!-- Testimonmail Area -->
       <div class="testimonial-area section-padding">
          <div class="container">
             <div class="row">
+            <div class="col-md-8 offset-md-2">
+                  <div class="section-title text-center">
+                     <h2>Showreel Delite</h2>
+                  </div>
+               </div>
                <div class="testimonial-active owl-carousel">
                   <!-- Single Testimonial-->
                   <div class="single-testimonial">
@@ -748,10 +559,7 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
                         <img src="assets/img/testimonial1.png" alt="">
                      </div>
                      <div class="testimonial-content">
-                        <i class="flaticon-right-quote"></i>
                         <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Sed do eiusmod tempor incididunt ut labore et dolo.</p>
-                        <h3>Robert Jhonson</h3>
-                        <span>Envato Customer</span>
                      </div>
                   </div>
                   <!-- Single Testimonial-->
@@ -786,14 +594,14 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
          </div>
       </div>
       <!-- /End Testimonial  Area -->
-      <!-- Blog Area -->
-      <div class="blog-area section-padding" data-scroll-index="4">
+
+<!-- Blog Area -->
+<div class="blog-area section-padding" data-scroll-index="3">
          <div class="container">
             <div class="row">
                <div class="col-md-8 offset-md-2">
                   <div class="section-title text-center">
                      <h2>Berita Terbaru kami</h2>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim ad minim.</p>
                   </div>
                </div>
             </div>
@@ -873,8 +681,202 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
             </div>
          </div>
       </div>
+
+      <!-- DIHILANGKAN -->
+      <!-- Call To Action Area-->
+      <!-- <div class="cta-area">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-9 col-sm-12">
+                  <div class="cta-text">
+                     <h2>Want to see our more creative work? </h2>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="cta-btn">
+                     <a class="viso-btn cta" href="#">contat us</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div> -->
+      <!-- /End Call To Action Area-->
+
+
+      <!-- Team Area -->
+      <div class="team-area">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8 offset-md-2">
+                  <div class="section-title text-center">
+                     <h2>Our Team Member</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <!-- single team -->
+               <?php
+               while ($team_area = mysqli_fetch_assoc($query_team_area)) {
+                  $nama_team = $team_area['nama_team'];
+                  $jabatan_team = $team_area['jabatan_team'];
+                  $lokasi_img = str_replace("../../", "", $team_area['lokasi_img']);
+               ?>
+
+                  <div class="col-md-4">
+                     <div class="single-team" style="max-height: 380px;">
+                        <img src="<?php echo $lokasi_img; ?>" style="max-height: 200px;" alt="">
+                        <h2><?php echo $nama_team; ?></h2>
+                        <p><?php echo $jabatan_team; ?></p>
+                     </div>
+                  </div>
+
+               <?php
+               }
+               ?>
+
+
+            </div>
+         </div>
+      </div>
+      <!-- /End Team Area -->
+      <!-- About Agency Area -->
+      <!-- <div class="about-agency section-padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6 col-sm-12">
+                  <div class="agency-details">
+                     <h2>We help clients to create Digital amazing experience.</h2>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                     <a class="viso-btn discover" href="#">Case study</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div> -->
+      <!-- /End About Agency Area -->
+      <!-- Pricing  Area -->
+      <!-- <div class="pricing-area section-padding" data-scroll-index="3">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-5 col-sm-12">
+                  <div class="section-title effect text-left">
+                     <h2>our pricing plan</h2>
+                     <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididuntut.</p>
+                  </div>
+               </div>
+               <div class="col-md-4 offset-md-3 col-sm-12">
+                  <div class="price-swetch float-right m-t">
+                     <ul class="nav" id="myTab" role="tablist">
+                        <li>
+                           <a id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">yearly</a>
+                        </li>
+                        <li>
+                           <a class="active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">monthly</a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="tab-content">
+                  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                     <div class="row">
+                        <div class="col-md-4">
+                           <div class="pricing-table m-t">
+                              <div class="price-img">
+                                 <img src="assets/img/price-img1.png" alt="">
+                              </div>
+                              <div class="price-content">
+                                 <h2>Basic Plan</h2>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
+                                 <span class="rate basic">$10.00</span>
+                                 <a class="viso-btn price" href="#">purchase now</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="pricing-table m-t">
+                              <div class="price-img">
+                                 <img src="assets/img/price-img2.png" alt="">
+                              </div>
+                              <div class="price-content">
+                                 <h2>standard Plan</h2>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
+                                 <span class="rate advance">$15.00</span>
+                                 <a class="viso-btn price" href="#">purchase now</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="pricing-table m-t">
+                              <div class="price-img">
+                                 <img src="assets/img/price-img3.png" alt="">
+                              </div>
+                              <div class="price-content">
+                                 <h2>premium Plan</h2>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
+                                 <span class="rate pro">$20.00</span>
+                                 <a class="viso-btn price" href="#">purchase now</a>
+                              </div>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+                  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                     <div class="row">
+
+                        <div class="col-md-4">
+                           <div class="pricing-table m-t">
+                              <div class="price-img">
+                                 <img src="assets/img/price-img1.png" alt="">
+                              </div>
+                              <div class="price-content">
+                                 <h2>Basic Plan</h2>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
+                                 <span class="rate basic">$100.00</span>
+                                 <a class="viso-btn price" href="#">purchase now</a>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-4">
+                           <div class="pricing-table m-t">
+                              <div class="price-img">
+                                 <img src="assets/img/price-img2.png" alt="">
+                              </div>
+                              <div class="price-content">
+                                 <h2>standard Plan</h2>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
+                                 <span class="rate advance">$150.00</span>
+                                 <a class="viso-btn price" href="#">purchase now</a>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-4">
+                           <div class="pricing-table m-t">
+                              <div class="price-img">
+                                 <img src="assets/img/price-img3.png" alt="">
+                              </div>
+                              <div class="price-content">
+                                 <h2>premium Plan</h2>
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do mojak eiusmod tempor incididun.</p>
+                                 <span class="rate pro">$200.00</span>
+                                 <a class="viso-btn price" href="#">purchase now</a>
+                              </div>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div> -->
+      <!-- /End Pricing  Area -->
+      <!-- Testimonmail Area -->
       <!-- FAQ AREA -->
-      <div class="faq-area section-padding" data-scroll-index="5">
+      <div class="faq-area section-padding" data-scroll-index="4">
          <div class="container">
             <div class="row">
                <div class="col-md-8 offset-md-2">
@@ -1040,7 +1042,7 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
       }
       ?>
 
-      <div class="contact-area section-padding" data-scroll-index="6">
+      <div class="contact-area section-padding" data-scroll-index="5">
          <div class="container">
             <div class="row">
                <div class="col-md-8 offset-md-2">
