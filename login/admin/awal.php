@@ -1260,8 +1260,8 @@
 
       <!-- TEAM AREA  -->
       <div class="col-lg-6 col-xs-6">
-    <div class="small-box bg-light-blue">
-        <div class="inner">
+        <div class="small-box bg-light-blue">
+          <div class="inner">
             <p><strong>TEAM AREA</strong></p>
 
             <?php
@@ -1277,100 +1277,100 @@
             ?>
 
             <div class="tabelteam_area_section">
-                <div class="responsive-table-container">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Team</th>
-                                <th>Jabatan Team</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $no = $offset_team + 1;
-                            while ($row = mysqli_fetch_assoc($query_team_page)) {
-                                $id_team_area = $row['id_team_area'];
-                                $nama_team = $row['nama_team'];
-                                $jabatan_team = $row['jabatan_team'];
-                            ?>
-                                <tr>
-                                    <td><?= $no ?></td>
-                                    <td><?= $nama_team ?></td>
-                                    <td><?= $jabatan_team ?></td>
-                                    <td class="text-center">
-                                        <form action="" method="POST">
-                                            <input type="hidden" name="id_team_area" value="<?= $id_team_area ?>">
-                                            <button type="submit" name="hapus_team_area" class="btn btn-danger">Hapus</button>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editTeamModal<?= $id_team_area ?>">Edit</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <!-- Modal Edit -->
-                                <div class="modal fade" id="editTeamModal<?= $id_team_area ?>" tabindex="-1" role="dialog" aria-labelledby="editTeamModalLabel<?= $id_team_area ?>" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" style="color: black;" id="editTeamModalLabel<?= $id_team_area ?>">Edit Team</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- Form untuk edit data team -->
-                                                <form action="proses_edit_team_area.php" method="POST" enctype="multipart/form-data">
-                                                    <div class="form-group">
-                                                        <input type="hidden" class="form-control-file" id="id_team_area<?= $id_team_area ?>" name="id_team_area" value="<?= $id_team_area ?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="lokasi_img<?= $id_team_area ?>" style="color: black;">Ganti Gambar:</label>
-                                                        <input type="file" class="form-control" id="lokasi_img<?= $id_team_area ?>" name="lokasi_img" value="<?= $lokasi_img ?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="nama_team<?= $id_team_area ?>" style="color: black;">Nama Team:</label>
-                                                        <input type="text" class="form-control" id="nama_team<?= $id_team_area ?>" name="nama_team" value="<?= $nama_team ?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="jabatan_team<?= $id_team_area ?>" style="color: black;">Jabatan Team:</label>
-                                                        <input type="text" class="form-control" id="jabatan_team<?= $id_team_area ?>" name="jabatan_team" value="<?= $jabatan_team ?>">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+              <div class="responsive-table-container">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Nama Team</th>
+                      <th>Jabatan Team</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $no = $offset_team + 1;
+                    while ($row = mysqli_fetch_assoc($query_team_page)) {
+                      $id_team_area = $row['id_team_area'];
+                      $nama_team = $row['nama_team'];
+                      $jabatan_team = $row['jabatan_team'];
+                    ?>
+                      <tr>
+                        <td><?= $no ?></td>
+                        <td><?= $nama_team ?></td>
+                        <td><?= $jabatan_team ?></td>
+                        <td class="text-center">
+                          <form action="" method="POST">
+                            <input type="hidden" name="id_team_area" value="<?= $id_team_area ?>">
+                            <button type="submit" name="hapus_team_area" class="btn btn-danger">Hapus</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editTeamModal<?= $id_team_area ?>">Edit</button>
+                          </form>
+                        </td>
+                      </tr>
+                      <!-- Modal Edit -->
+                      <div class="modal fade" id="editTeamModal<?= $id_team_area ?>" tabindex="-1" role="dialog" aria-labelledby="editTeamModalLabel<?= $id_team_area ?>" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" style="color: black;" id="editTeamModalLabel<?= $id_team_area ?>">Edit Team</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- Form untuk edit data team -->
+                              <form action="proses_edit_team_area.php" method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                  <input type="hidden" class="form-control-file" id="id_team_area<?= $id_team_area ?>" name="id_team_area" value="<?= $id_team_area ?>">
                                 </div>
-                            <?php
-                                $no++;
-                            }
-                            if ($no === 1) {
-                                echo "<tr><td colspan='5'>Tidak ada data team</td></tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
+                                <div class="form-group">
+                                  <label for="lokasi_img<?= $id_team_area ?>" style="color: black;">Ganti Gambar:</label>
+                                  <input type="file" class="form-control" id="lokasi_img<?= $id_team_area ?>" name="lokasi_img" value="<?= $lokasi_img ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="nama_team<?= $id_team_area ?>" style="color: black;">Nama Team:</label>
+                                  <input type="text" class="form-control" id="nama_team<?= $id_team_area ?>" name="nama_team" value="<?= $nama_team ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="jabatan_team<?= $id_team_area ?>" style="color: black;">Jabatan Team:</label>
+                                  <input type="text" class="form-control" id="jabatan_team<?= $id_team_area ?>" name="jabatan_team" value="<?= $jabatan_team ?>">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <?php
+                      $no++;
+                    }
+                    if ($no === 1) {
+                      echo "<tr><td colspan='5'>Tidak ada data team</td></tr>";
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
-        </div>
-        <?php if ($total_pages_team > 1) : ?>
+          </div>
+          <?php if ($total_pages_team > 1) : ?>
             <div class="pagination-container">
-                <ul class="pagination">
-                    <?php if ($current_page_team > 1) : ?>
-                        <li class="page-item"><a class="page-link" href="?page_team=<?= $current_page_team - 1 ?>">Back</a></li>
-                    <?php endif; ?>
-                    <?php for ($i = 1; $i <= $total_pages_team; $i++) : ?>
-                        <li class="page-item <?= $i == $current_page_team ? 'active' : '' ?>"><a class="page-link" href="?page_team=<?= $i ?>"><?= $i ?></a></li>
-                    <?php endfor; ?>
-                    <?php if ($current_page_team < $total_pages_team) : ?>
-                        <li class="page-item"><a class="page-link" href="?page_team=<?= $current_page_team + 1 ?>">Next</a></li>
-                    <?php endif; ?>
-                </ul>
+              <ul class="pagination">
+                <?php if ($current_page_team > 1) : ?>
+                  <li class="page-item"><a class="page-link" href="?page_team=<?= $current_page_team - 1 ?>">Back</a></li>
+                <?php endif; ?>
+                <?php for ($i = 1; $i <= $total_pages_team; $i++) : ?>
+                  <li class="page-item <?= $i == $current_page_team ? 'active' : '' ?>"><a class="page-link" href="?page_team=<?= $i ?>"><?= $i ?></a></li>
+                <?php endfor; ?>
+                <?php if ($current_page_team < $total_pages_team) : ?>
+                  <li class="page-item"><a class="page-link" href="?page_team=<?= $current_page_team + 1 ?>">Next</a></li>
+                <?php endif; ?>
+              </ul>
             </div>
-        <?php endif; ?>
-        <a href="#" class="small-box-footer" data-toggle="modal" data-target="#tambahTeamAreaModal">Tambah Team<i class="fa fa-arrow-circle-right"></i></a>
-    </div>
-</div>
+          <?php endif; ?>
+          <a href="#" class="small-box-footer" data-toggle="modal" data-target="#tambahTeamAreaModal">Tambah Team<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
 
       <!-- Hapus team area -->
       <?php
@@ -1420,6 +1420,175 @@
           </div>
         </div>
       </div>
+
+      <!-- Showreel -->
+      <div class="col-lg-6 col-xs-6">
+        <div class="small-box bg-maroon">
+          <div class="inner">
+            <p><strong>SHOWREEL SECTION</strong></p>
+            <p>(jangan terlalu banyak link youtube)</p>
+
+            <?php
+            $sql_showreel_section = "SELECT id_showreel, judul_showreel, deskripsi_showreel, link_showreel FROM showreel_section";
+            $query_showreel_section = mysqli_query($koneksi, $sql_showreel_section);
+            $total_items_showreel = mysqli_num_rows($query_showreel_section);
+            $items_per_page_showreel = 3;
+            $total_pages_showreel = ceil($total_items_showreel / $items_per_page_showreel);
+            $current_page_showreel = isset($_GET['page_showreel']) ? $_GET['page_showreel'] : 1;
+            $offset_showreel = ($current_page_showreel - 1) * $items_per_page_showreel;
+            $sql_showreel_page = "SELECT id_showreel, judul_showreel, deskripsi_showreel, link_showreel  FROM showreel_section LIMIT $offset_showreel, $items_per_page_showreel";
+            $query_showreel_page = mysqli_query($koneksi, $sql_showreel_page);
+            ?>
+
+            <div class="tabelshowreel_section_section">
+              <div class="responsive-table-container">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Judul Showreel</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $no = $offset_showreel + 1;
+                    while ($row = mysqli_fetch_assoc($query_showreel_page)) {
+                      $id_showreel = $row['id_showreel'];
+                      $judul_showreel = $row['judul_showreel'];
+                      $deskripsi_showreel = $row['deskripsi_showreel'];
+                      $link_showreel = $row['link_showreel'];
+                    ?>
+                      <tr>
+                        <td><?= $no ?></td>
+                        <td><?= $judul_showreel ?></td>
+                        <td class="text-center">
+                          <form action="" method="POST" style="display: inline;">
+                            <input type="hidden" name="id_showreel" value="<?= $id_showreel ?>">
+                            <button type="submit" name="hapus_showreel" class="btn btn-danger">Hapus</button>
+                          </form>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editShowreelModal<?= $id_showreel ?>">Edit</button>
+
+                        </td>
+                      </tr>
+                      <!-- Modal Edit -->
+                      <div class="modal fade" id="editShowreelModal<?= $id_showreel ?>" tabindex="-1" role="dialog" aria-labelledby="editShowreelModalLabel<?= $id_showreel ?>" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" style="color: black;" id="editShowreelModalLabel<?= $id_showreel ?>">Edit Showreel</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- Form untuk edit data showreel -->
+                              <form action="proses_edit_showreel.php" method="POST">
+                                <div class="form-group">
+                                  <input type="hidden" name="id_showreel" value="<?= $id_showreel ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="judul_showreel<?= $id_showreel ?>" style="color: black;">Judul Showreel:</label>
+                                  <input type="text" class="form-control" id="judul_showreel<?= $id_showreel ?>" name="judul_showreel" value="<?= $judul_showreel ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="deskripsi_showreel<?= $id_showreel ?>" style="color: black;">Deskripsi Showreel:</label>
+                                  <textarea class="form-control" id="deskripsi_showreel<?= $id_showreel ?>" name="deskripsi_showreel" rows="3"><?= $row['deskripsi_showreel'] ?? '' ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                  <label for="link_showreel<?= $id_showreel ?>" style="color: black;">Link Showreel:</label>
+                                  <input type="text" class="form-control" id="link_showreel<?= $id_showreel ?>" name="link_showreel" value="<?= $row['link_showreel'] ?? '' ?>">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+
+                    <?php
+                      $no++;
+                    }
+                    if ($no === 1) {
+                      echo "<tr><td colspan='3'>Tidak ada data showreel</td></tr>";
+                    }
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <?php if ($total_pages_showreel > 1) : ?>
+            <div class="pagination-container">
+              <ul class="pagination">
+                <?php if ($current_page_showreel > 1) : ?>
+                  <li class="page-item"><a class="page-link" href="?page_showreel=<?= $current_page_showreel - 1 ?>">Back</a></li>
+                <?php endif; ?>
+                <?php for ($i = 1; $i <= $total_pages_showreel; $i++) : ?>
+                  <li class="page-item <?= $i == $current_page_showreel ? 'active' : '' ?>"><a class="page-link" href="?page_showreel=<?= $i ?>"><?= $i ?></a></li>
+                <?php endfor; ?>
+                <?php if ($current_page_showreel < $total_pages_showreel) : ?>
+                  <li class="page-item"><a class="page-link" href="?page_showreel=<?= $current_page_showreel + 1 ?>">Next</a></li>
+                <?php endif; ?>
+              </ul>
+            </div>
+          <?php endif; ?>
+          <a href="#" class="small-box-footer" data-toggle="modal" data-target="#tambahShowreelModal">Tambah Showreel<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Hapus showreel -->
+      <?php
+      if (isset($_POST['hapus_showreel'])) {
+        $id_showreel = $_POST['id_showreel'];
+        // Lakukan proses hapus showreel sesuai dengan id_showreel yang diterima
+        $sql_hapus_showreel = "DELETE FROM showreel_section WHERE id_showreel = '$id_showreel'";
+        $query_hapus_showreel = mysqli_query($koneksi, $sql_hapus_showreel);
+        if ($query_hapus_showreel) {
+          // Redirect atau perbarui halaman setelah hapus berhasil
+          echo '<script>alert("Data showreel berhasil dihapus."); window.location.href = document.referrer;</script>';
+          exit;
+        } else {
+          echo '<script>alert("Terjadi kesalahan saat menghapus data showreel."); window.location.href = document.referrer;</script>';
+        }
+      }
+      ?>
+      <!-- Modal Tambah Showreel -->
+      <div class="modal fade" id="tambahShowreelModal" tabindex="-1" role="dialog" aria-labelledby="tambahShowreelModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tambahShowreelModalLabel">Tambah Showreel</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Form tambah showreel -->
+              <form action="proses_tambah_showreel.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="judul_showreel">Judul Showreel:</label>
+                  <input type="text" class="form-control" id="judul_showreel" name="judul_showreel" required>
+                </div>
+                <div class="form-group">
+                  <label for="deskripsi_showreel">Deskripsi Showreel:</label>
+                  <textarea class="form-control" id="deskripsi_showreel" name="deskripsi_showreel" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="link_showreel">Link Showreel:</label>
+                  <input type="text" class="form-control" id="link_showreel" name="link_showreel" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Tambah</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     </div>
 

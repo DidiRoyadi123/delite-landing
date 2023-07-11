@@ -53,6 +53,8 @@ $fetch_kategori_portofolio = mysqli_fetch_assoc($query_kategori_portofolio);
 $sql_team_area = "SELECT * FROM team_area";
 $query_team_area = mysqli_query($koneksi, $sql_team_area);
 
+$sql_showreel_section = "SELECT judul_showreel, deskripsi_showreel, link_showreel FROM showreel_section";
+$query_showreel_section = mysqli_query($koneksi, $sql_showreel_section);
 
 ?>
 
@@ -232,6 +234,73 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
       .contact-area,
       .map-area {
          padding: 100px 0;
+      }
+
+      /* tampilan youtube */
+      .testimonial-area {
+         padding: 60px 0;
+      }
+
+      .testimonial-active .single-testimonial {
+         text-align: center;
+         margin-bottom: 40px;
+      }
+
+      .testimonail-img iframe {
+         width: 100%;
+         height: 315px;
+      }
+
+      .testimonial-content h3 {
+         margin-top: 20px;
+         margin-bottom: 10px;
+         font-weight: bold;
+      }
+
+      .testimonial-content p {
+         margin-bottom: 20px;
+      }
+
+      @media screen and (min-width: 768px) {
+         .testimonial-active .single-testimonial {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+         }
+
+         .testimonail-img {
+            flex-basis: 40%;
+         }
+
+         .testimonial-content {
+            flex-basis: 60%;
+            padding-left: 40px;
+         }
+      }
+
+      @media only screen and (max-width: 767px) {
+
+         .testimonial-content {
+            margin-top: 50px;
+            width: 100%;
+            padding: 0 10%;
+         }
+
+         .testimonail-img {
+            width: 360px;
+            height: 265px;
+         }
+      }
+
+      @media only screen and (max-width: 390px) {
+         .testimonial-content {
+            margin-top: 10%;
+            width: 100%;
+         }
+
+         .testimonail-img {
+            width: 90%;
+         }
       }
    </style>
 </head>
@@ -547,56 +616,39 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
       <div class="testimonial-area section-padding">
          <div class="container">
             <div class="row">
-            <div class="col-md-8 offset-md-2">
+               <div class="col-md-8 offset-md-2">
                   <div class="section-title text-center">
                      <h2>Showreel Delite</h2>
                   </div>
                </div>
                <div class="testimonial-active owl-carousel">
-                  <!-- Single Testimonial-->
-                  <div class="single-testimonial">
-                     <div class="testimonail-img">
-                        <img src="assets/img/testimonial1.png" alt="">
+                  <?php
+                  while ($row = mysqli_fetch_assoc($query_showreel_section)) {
+                     $judul_showreel = $row['judul_showreel'];
+                     $deskripsi_showreel = $row['deskripsi_showreel'];
+                     $link_showreel = $row['link_showreel'];
+                  ?>
+                     <div class="single-testimonial">
+                        <div class="testimonail-img">
+                           <iframe src="<?= $link_showreel ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="testimonial-content">
+                           <h3><?= $judul_showreel ?></h3>
+                           <p><?= $deskripsi_showreel ?></p>
+                        </div>
                      </div>
-                     <div class="testimonial-content">
-                        <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Sed do eiusmod tempor incididunt ut labore et dolo.</p>
-                     </div>
-                  </div>
-                  <!-- Single Testimonial-->
-                  <!-- Single Testimonial-->
-                  <div class="single-testimonial">
-                     <div class="testimonail-img">
-                        <img src="assets/img/testimonial2.png" alt="">
-                     </div>
-                     <div class="testimonial-content">
-                        <i class="flaticon-right-quote"></i>
-                        <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Sed do eiusmod tempor incididunt ut labore et dolo.</p>
-                        <h3>Robert Jhonson</h3>
-                        <span>Envato Customer</span>
-                     </div>
-                  </div>
-                  <!-- Single Testimonial-->
-                  <!-- Single Testimonial-->
-                  <div class="single-testimonial">
-                     <div class="testimonail-img">
-                        <img src="assets/img/testimonial3.png" alt="">
-                     </div>
-                     <div class="testimonial-content">
-                        <i class="flaticon-right-quote"></i>
-                        <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Sed do eiusmod tempor incididunt ut labore et dolo.</p>
-                        <h3>Robert Jhonson</h3>
-                        <span>Envato Customer</span>
-                     </div>
-                  </div>
-                  <!-- Single Testimonial-->
+                  <?php
+                  }
+                  ?>
                </div>
             </div>
          </div>
       </div>
+
       <!-- /End Testimonial  Area -->
 
-<!-- Blog Area -->
-<div class="blog-area section-padding" data-scroll-index="3">
+      <!-- Blog Area -->
+      <div class="blog-area section-padding" data-scroll-index="3">
          <div class="container">
             <div class="row">
                <div class="col-md-8 offset-md-2">
