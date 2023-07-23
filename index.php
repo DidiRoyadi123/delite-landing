@@ -514,39 +514,40 @@ $about_us = mysqli_fetch_assoc($query_about);
       <!-- Service Area -->
 
       <div class="service-area section-padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-8 offset-md-2" data-scroll-index="2">
-                  <div class="section-title text-center">
-                     <h2>Discover Our Expertise</h2>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="active-service-carousl owl-carousel">
-                  <?php
-                  $sql_service = "SELECT id_service, gambar_service, judul_service, caption_service FROM services";
-                  $query_service = mysqli_query($koneksi, $sql_service);
-
-                  if (mysqli_num_rows($query_service) === 0) {
-                     echo "<div class='single-service'>";
-                     echo "<h2>No Service Available</h2>";
-                     echo "</div>";
-                  } else {
-                     while ($fetch_service = mysqli_fetch_assoc($query_service)) {
-                        $gambar_service = str_replace("../../", "", $fetch_service['gambar_service']);
-                        echo "<div class='single-service'>";
-                        echo "<img src='$gambar_service' >";
-                        echo "<h2>" . $fetch_service['judul_service'] . "</h2>";
-                        echo "<p>" . $fetch_service['caption_service'] . "</p>";
-                        echo "</div>";
-                     }
-                  }
-                  ?>
-               </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-8 offset-md-2" data-scroll-index="2">
+            <div class="section-title text-center">
+               <h2>Discover Our Expertise</h2>
             </div>
          </div>
       </div>
+      <div class="row">
+         <div class="active-service-carousl owl-carousel" data-autoplay="500">
+            <?php
+            $sql_service = "SELECT id_service, gambar_service, judul_service, caption_service FROM services";
+            $query_service = mysqli_query($koneksi, $sql_service);
+
+            if (mysqli_num_rows($query_service) === 0) {
+               echo "<div class='single-service'>";
+               echo "<h2>No Service Available</h2>";
+               echo "</div>";
+            } else {
+               while ($fetch_service = mysqli_fetch_assoc($query_service)) {
+                  $gambar_service = str_replace("../../", "", $fetch_service['gambar_service']);
+                  echo "<div class='single-service'>";
+                  echo "<img src='$gambar_service'>";
+                  echo "<h2>" . $fetch_service['judul_service'] . "</h2>";
+                  echo "<p>" . $fetch_service['caption_service'] . "</p>";
+                  echo "</div>";
+               }
+            }
+            ?>
+         </div>
+      </div>
+   </div>
+</div>
+
       <!-- /End Service Area -->
       <!-- Portfolio Area-->
       <div class="portfolio-area">
