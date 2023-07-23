@@ -1,13 +1,29 @@
 <?php
 include_once "login/sambungan.php";
+
 $sql_logo = "SELECT lokasi_logo, nama_logo FROM logo";
-$query_logo = mysqli_query($koneksi, $sql_logo);
-$fetch_logo = mysqli_fetch_assoc($query_logo);
-$logo_utama = str_replace("../../", "", $fetch_logo['lokasi_logo']);
+$stmt = mysqli_prepare($koneksi, $sql_logo);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_bind_result($stmt, $lokasi_logo, $nama_logo);
+mysqli_stmt_fetch($stmt);
+$ekstensi_logo = pathinfo($lokasi_logo, PATHINFO_EXTENSION);
+$allowed_extensions = array('jpg', 'jpeg', 'png', 'gif');
+if (in_array($ekstensi_logo, $allowed_extensions)) {
+    $logo_utama = str_replace("../../", "", $lokasi_logo);
+} else {
+    $logo_utama = "assets/img/logo.png";
+}
+mysqli_stmt_close($stmt);
+
 
 $sql_caption_hero = "SELECT isi_caption FROM caption_hero_section";
-$query_caption_hero = mysqli_query($koneksi, $sql_caption_hero);
-$fetch_caption_hero = mysqli_fetch_assoc($query_caption_hero);
+$stmt_caption_hero = mysqli_prepare($koneksi, $sql_caption_hero);
+mysqli_stmt_execute($stmt_caption_hero);
+mysqli_stmt_bind_result($stmt_caption_hero, $fetch_caption_hero['isi_caption']);
+mysqli_stmt_fetch($stmt_caption_hero);
+mysqli_stmt_close($stmt_caption_hero);
+
+
 
 $sql_button_hero = "SELECT warna_button, nomor_kontak, email_kontak, teks_button_hero FROM button_hero";
 $query_button_hero = mysqli_query($koneksi, $sql_button_hero);
@@ -15,6 +31,7 @@ $button = mysqli_fetch_assoc($query_button_hero);
 $nomor_kontak = $button['nomor_kontak'];
 $nomor_kontak = preg_replace('/^0/', '+62', $nomor_kontak);
 $email_kontak = $button['email_kontak'];
+
 
 $sql_title_favicon = "SELECT lokasi_favicon, title FROM title_favicon";
 $query_title_favicon = mysqli_query($koneksi, $sql_title_favicon);
@@ -29,10 +46,22 @@ $sql_blogger = "SELECT api_key, blog_id FROM blogger";
 $query_blogger = mysqli_query($koneksi, $sql_blogger);
 $fetch_blogger = mysqli_fetch_assoc($query_blogger);
 
+
 $sql_service = "SELECT id_service, gambar_service, judul_service, caption_service FROM services";
-$query_service = mysqli_query($koneksi, $sql_service);
-$fetch_service = mysqli_fetch_assoc($query_service);
-$gambar_service = str_replace("../../", "", $fetch_service['gambar_service']);
+$stmt_service = mysqli_prepare($koneksi, $sql_service);
+mysqli_stmt_execute($stmt_service);
+mysqli_stmt_bind_result($stmt_service, $id_service, $gambar_service, $judul_service, $caption_service);
+mysqli_stmt_fetch($stmt_service);
+mysqli_stmt_close($stmt_service);
+if (!empty($gambar_service)) {
+    $ekstensi_gambar = pathinfo($gambar_service, PATHINFO_EXTENSION);
+    $allowed_extensions = array('jpg', 'jpeg', 'png', 'gif');
+    if (!in_array($ekstensi_gambar, $allowed_extensions)) {
+        $gambar_service = '';
+    }
+}
+
+
 
 $sql_maps = "SELECT link_maps FROM maps";
 $query_maps = mysqli_query($koneksi, $sql_maps);
