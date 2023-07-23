@@ -56,6 +56,9 @@ $query_team_area = mysqli_query($koneksi, $sql_team_area);
 $sql_showreel_section = "SELECT judul_showreel, deskripsi_showreel, link_showreel FROM showreel_section";
 $query_showreel_section = mysqli_query($koneksi, $sql_showreel_section);
 
+$sql_about = "SELECT about_us FROM about_section";
+$query_about = mysqli_query($koneksi, $sql_about);
+$about_us = mysqli_fetch_assoc($query_about);
 ?>
 
 <!DOCTYPE html>
@@ -1177,7 +1180,7 @@ $query_showreel_section = mysqli_query($koneksi, $sql_showreel_section);
                   <div class="col-lg-6 col-md-4">
                      <div class="about-widget">
                         <h2 class="widget-title">About us</h2>
-                        <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis trud exercitation ullamco laboris.</p>
+                        <p><?=$about_us['about_us']?></p>
                         <ul>
                            <li>
                               <i class="fa fa-envelope-o"></i>
