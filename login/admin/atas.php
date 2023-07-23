@@ -1,3 +1,11 @@
+<?php
+include_once "../sambungan.php";
+$sql_title_favicon = "SELECT lokasi_favicon, title FROM title_favicon";
+$query_title_favicon = mysqli_query($koneksi, $sql_title_favicon);
+$fetch_title_favicon = mysqli_fetch_assoc($query_title_favicon);
+$favicon = str_replace("../../", "", $fetch_title_favicon['lokasi_favicon']);
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +16,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- favicon -->
-  <link rel="shortcut icon" href="../../assets/img/logo-bkm.png">
+  <link rel="shortcut icon" href="<?php echo $fetch_title_favicon['lokasi_favicon']; ?>">
   <!-- Bootstrap 3.3.5 -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/ -->
