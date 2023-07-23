@@ -26,7 +26,7 @@ $j=mysqli_fetch_assoc($qjumlah);
     <section class="content-header">
       <h1>
        Dashboard Dosen & Staff SEMIRA
-        <small>Pemilihan Ketua BKM</small>
+        <small>PT Himbar buana wibawa</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="."><i class="fa fa-dashboard"></i> Beranda</a></li>
@@ -55,7 +55,7 @@ echo '            </div>
               <img src="../gambar/kandidat/'.$r['foto'].'" height="100px"/>
             </div>';
         if($ada==0){
-            // echo'<a href="?m=dosenstaff&s=pilihan&id='.$r['idkandidat'].'" class="small-box-footer">Pilihan Anda? <i class="fa fa-arrow-circle-up"></i></a>';
+            // echo'<a href="?m=proyek&s=pilihan&id='.$r['idkandidat'].'" class="small-box-footer">Pilihan Anda? <i class="fa fa-arrow-circle-up"></i></a>';
               // modal cofirmation
           echo '<a href="#" class="small-box-footer" data-toggle="modal" data-target="#modal-default'.$r['idkandidat'].'">Pilih <i class="fa fa-arrow-circle-right"></i></a>';
           echo '<div class="modal fade" id="modal-default'.$r['idkandidat'].'">
@@ -71,7 +71,7 @@ echo '            </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tidak</button>
-                  <a href="?m=mahasiswa&s=pilihan&id='.$r['idkandidat'].'" class="btn btn-primary">Ya</a>
+                  <a href="?m=karyawan&s=pilihan&id='.$r['idkandidat'].'" class="btn btn-primary">Ya</a>
                 </div>
               </div>
               <!-- /.modal-content -->

@@ -17,11 +17,11 @@ if(isset($_GET['idp'])){
 		
 	$hapus1 = mysqli_query($koneksi,$sql1);
 	if($hapus1){
-//			echo 'Data Kelas Berhasil di Hapus ';
+//			echo 'Data divisi Berhasil di Hapus ';
 //			echo '<a href="index.php">Kembali</a>';
 		header("Location: ?m=admin");
 	}else{
-		echo 'Data Kelas GAGAL di Hapus';
+		echo 'Data divisi GAGAL di Hapus';
 		echo '<a href="index.php">Kembali</a>';
 	}
 }

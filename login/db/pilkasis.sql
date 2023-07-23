@@ -41,20 +41,20 @@ CREATE TABLE `datapemilihan` (
 --
 
 INSERT INTO `datapemilihan` (`idpemilihan`, `tipe`, `idpemilih`, `idkandidat`, `waktu`) VALUES
-(1, 'mahasiswa', '1', '2', '2017-06-10 19:02:42'),
-(2, 'dosenstaff', '009', '1', '2017-06-11 04:58:43'),
-(3, 'mahasiswa', '2', '2', '2017-06-12 11:47:33'),
-(4, 'dosenstaff', '161701002', '2', '2017-06-12 11:51:50'),
-(5, 'mahasiswa', '3', '1', '2020-01-16 04:05:18'),
-(6, 'dosenstaff', '071001006', '1', '2020-01-16 04:06:24');
+(1, 'karyawan', '1', '2', '2017-06-10 19:02:42'),
+(2, 'proyek', '009', '1', '2017-06-11 04:58:43'),
+(3, 'karyawan', '2', '2', '2017-06-12 11:47:33'),
+(4, 'proyek', '161701002', '2', '2017-06-12 11:51:50'),
+(5, 'karyawan', '3', '1', '2020-01-16 04:05:18'),
+(6, 'proyek', '071001006', '1', '2020-01-16 04:06:24');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dosenstaff`
+-- Struktur dari tabel `proyek`
 --
 
-CREATE TABLE `dosenstaff` (
+CREATE TABLE `proyek` (
   `nip` varchar(9) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(32) NOT NULL,
@@ -69,10 +69,10 @@ CREATE TABLE `dosenstaff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `dosenstaff`
+-- Dumping data untuk tabel `proyek`
 --
 
-INSERT INTO `dosenstaff` (`nip`, `username`, `password`, `nama`, `jk`, `mengajar`, `email`, `hp`, `memilih`, `aktif`, `foto`) VALUES
+INSERT INTO `proyek` (`nip`, `username`, `password`, `nama`, `jk`, `mengajar`, `email`, `hp`, `memilih`, `aktif`, `foto`) VALUES
 ('009', 'cahyo', '772c2161cb7137df9da9d3ad4d57b16f', 'Cahyo', 'L', 'TIK', 'cahyo@aja.deh', '088', '', 'Y', 'AYat Kursi dan tajwidnya.jpg'),
 ('010', 'Kosasih', 'cb2dd182b361be88c2b4d91e96ecb76a', 'Kosasih', '', 'PKN', '', '0898', '', 'Y', 'ai.png'),
 ('011', 'yusuf', 'dd2eb170076a5dec97cdbbbbff9a4405', 'Yusuf', '', 'PKN', '', '076', '', 'Y', 'chat1.png'),
@@ -111,26 +111,26 @@ CREATE TABLE `kandidat` (
 --
 
 INSERT INTO `kandidat` (`idkandidat`, `username`, `password`, `nama`, `nokandidat`, `jumlahsuara`, `visi`, `misi`, `aktif`, `foto`) VALUES
-(1, 'kandidat1', '8f23e4acba1b7f45423b930e7cfadbd0', 'Tuan dan Puan', '2', '5', 'Mejadikan sekolah ini sebagai sekolah SMA Favorit karena BKM-nya', '<ol><li>Tahun ini harus haji semua pendosenstaffs OSISnya</li><li>\r\nMenjadikan bla..bla...</li><li>\r\njadinya hahahaha</li><li>\r\napa yah</li><li>\r\nbukan deh</li></ol>', 'Y', '411.jpg'),
+(1, 'kandidat1', '8f23e4acba1b7f45423b930e7cfadbd0', 'Tuan dan Puan', '2', '5', 'Mejadikan sekolah ini sebagai sekolah SMA Favorit karena BKM-nya', '<ol><li>Tahun ini harus haji semua penproyeks OSISnya</li><li>\r\nMenjadikan bla..bla...</li><li>\r\njadinya hahahaha</li><li>\r\napa yah</li><li>\r\nbukan deh</li></ol>', 'Y', '411.jpg'),
 (2, 'muhidin', 'c0f6e70583525a8a265e19de06d6bff8', 'Muhidin', '1', '4', 'Menjadikan sebagai BKM terbaik sekota Depok', '<ol><li>Membuat pengajian rutin</li><li>\nMengundang pembicara kaliber nasional per 3 bulan ke acara BKM</li><li>lain-lain</li></ol>', 'Y', 'AllahWithUs.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelas`
+-- Struktur dari tabel `divisi`
 --
 
-CREATE TABLE `kelas` (
-  `idkelas` int(2) NOT NULL,
-  `kelas` varchar(7) CHARACTER SET latin1 NOT NULL,
+CREATE TABLE `divisi` (
+  `iddivisi` int(2) NOT NULL,
+  `divisi` varchar(7) CHARACTER SET latin1 NOT NULL,
   `jumlah` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kelas`
+-- Dumping data untuk tabel `divisi`
 --
 
-INSERT INTO `kelas` (`idkelas`, `kelas`, `jumlah`) VALUES
+INSERT INTO `divisi` (`iddivisi`, `divisi`, `jumlah`) VALUES
 (1, '10.1', 29),
 (2, '10.2', 31),
 (3, '10.3', 12),
@@ -163,7 +163,7 @@ CREATE TABLE `pengguna` (
 
 INSERT INTO `pengguna` (`idpengguna`, `username`, `password`, `nama`, `jabatan`, `hp`, `email`, `hakakses`, `aktif`, `foto`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin Web SEMIRA', 'Administrator', '081297224622', 'muhidinsaimin@gmail.com', 'Admin', 'Y', 'muhidin.jpg'),
-(8, 'humam', 'c3ec0f7b054e729c5a716c8125839829', 'Humam Al Labib', 'mahasiswa', '-', 'humam.alabib@gmail.com', 'Admin', 'Y', 'AllahWithUs.jpg'),
+(8, 'humam', 'c3ec0f7b054e729c5a716c8125839829', 'Humam Al Labib', 'karyawan', '-', 'humam.alabib@gmail.com', 'Admin', 'Y', 'AllahWithUs.jpg'),
 (9, 'sma', 'a289fa4252ed5af8e3e9f9bee545c172', 'SMA Pro', 'sma', 'sma', 'sma@pro.id', 'Admin', 'Y', 'dasi.gif'),
 (10, 'dea', '96991368fec63c8a1bfc48a70010f84a', 'hhghjjgj', 'ghjg', 'hjgjhg', 'ghhjg@kj.hk', 'Magang', 'T', 'AYat Kursi dan tajwidnya.jpg'),
 (11, 'siakoe', '6d9a3b288d05321b95419a1f9afb6f49', 'Siakoe', 'Big Boss', '081297224622', 'siakoe@dong.ah', 'Magang', 'Y', 'suratname.png'),
@@ -172,10 +172,10 @@ INSERT INTO `pengguna` (`idpengguna`, `username`, `password`, `nama`, `jabatan`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mahasiswa`
+-- Struktur dari tabel `karyawan`
 --
 
-CREATE TABLE `mahasiswa` (
+CREATE TABLE `karyawan` (
   `nis` varchar(9) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(32) NOT NULL,
@@ -183,7 +183,7 @@ CREATE TABLE `mahasiswa` (
   `jk` varchar(1) NOT NULL,
   `tempatlahir` varchar(30) NOT NULL,
   `tanggallahir` date NOT NULL,
-  `idkelas` varchar(2) NOT NULL,
+  `iddivisi` varchar(2) NOT NULL,
   `email` varchar(50) NOT NULL,
   `hp` varchar(15) NOT NULL,
   `aktif` enum('Y','T') NOT NULL DEFAULT 'T',
@@ -192,10 +192,10 @@ CREATE TABLE `mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `mahasiswa`
+-- Dumping data untuk tabel `karyawan`
 --
 
-INSERT INTO `mahasiswa` (`nis`, `username`, `password`, `nama`, `jk`, `tempatlahir`, `tanggallahir`, `idkelas`, `email`, `hp`, `aktif`, `memilih`, `foto`) VALUES
+INSERT INTO `karyawan` (`nis`, `username`, `password`, `nama`, `jk`, `tempatlahir`, `tanggallahir`, `iddivisi`, `email`, `hp`, `aktif`, `memilih`, `foto`) VALUES
 ('1', 'nmr', '3acc04fb854f7a377e9d3656df8e99f1', 'Naufal Mumtaz Ramadhan', 'L', 'Jepara', '2001-12-06', '1', 'naufal.mr@gmail.com', '0822', 'Y', '', 'IMG_20160813_092446.jpg'),
 ('121212', '121212', '17afe9ec472cd0ff881c276d1125de58', 'mahmudin', 'L', 'Jepara', '2001-05-07', '1', '', '', 'T', '', ''),
 ('2', 'humam', '6f99cd6a204c61990e0abbe993988efe', 'Humam Al Labib', 'L', 'Jepara', '2003-12-30', '4', 'humam.alabib@gmail.com', '0812', 'Y', '', 'WorkshopDepicta2017.jpg'),
@@ -212,9 +212,9 @@ ALTER TABLE `datapemilihan`
   ADD PRIMARY KEY (`idpemilihan`);
 
 --
--- Indeks untuk tabel `dosenstaff`
+-- Indeks untuk tabel `proyek`
 --
-ALTER TABLE `dosenstaff`
+ALTER TABLE `proyek`
   ADD PRIMARY KEY (`nip`),
   ADD UNIQUE KEY `username` (`username`);
 
@@ -225,10 +225,10 @@ ALTER TABLE `kandidat`
   ADD PRIMARY KEY (`idkandidat`);
 
 --
--- Indeks untuk tabel `kelas`
+-- Indeks untuk tabel `divisi`
 --
-ALTER TABLE `kelas`
-  ADD PRIMARY KEY (`idkelas`);
+ALTER TABLE `divisi`
+  ADD PRIMARY KEY (`iddivisi`);
 
 --
 -- Indeks untuk tabel `pengguna`
@@ -238,9 +238,9 @@ ALTER TABLE `pengguna`
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indeks untuk tabel `mahasiswa`
+-- Indeks untuk tabel `karyawan`
 --
-ALTER TABLE `mahasiswa`
+ALTER TABLE `karyawan`
   ADD PRIMARY KEY (`nis`),
   ADD UNIQUE KEY `pengguna` (`username`);
 
@@ -261,10 +261,10 @@ ALTER TABLE `kandidat`
   MODIFY `idkandidat` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `kelas`
+-- AUTO_INCREMENT untuk tabel `divisi`
 --
-ALTER TABLE `kelas`
-  MODIFY `idkelas` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `divisi`
+  MODIFY `iddivisi` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengguna`

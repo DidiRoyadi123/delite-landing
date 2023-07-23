@@ -26,7 +26,7 @@ $j=mysqli_fetch_assoc($qjumlah);
   <section class="content-header">
     <h1>
       Login Kandidat SEMIRA
-      <small>Pemilihan Ketua BKM</small>
+      <small>PT Himbar buana wibawa</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="."><i class="fa fa-dashboard"></i> Beranda</a></li>
@@ -54,7 +54,7 @@ $j=mysqli_fetch_assoc($qjumlah);
               <img src="../gambar/kandidat/' . $r['foto'] . '" height="100px"/>
             </div>';
         if ($ada == 0) {
-          echo '<a href="?m=kandidat&s=pilihan&id=' . $r['idkandidat'] . '" class="small-box-footer">Jika ingin memilih gunakan akun Mahasiswa <i class="fa fa-arrow-circle-up"></i></a>';
+          echo '<a href="?m=kandidat&s=pilihan&id=' . $r['idkandidat'] . '" class="small-box-footer">Jika ingin memilih gunakan akun karyawan <i class="fa fa-arrow-circle-up"></i></a>';
         } else {
           echo '<a href="#" class="small-box-footer">Anda sudah memilih <i class="fa fa-check"></i></a>';
         }

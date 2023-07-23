@@ -4,7 +4,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 1.0.0
         </div>
-        <strong>Semira BKM UCIC 2022
+        <strong>PT Himbar buana wibawa
       </footer>
     </div><!-- ./wrapper - adanya di atas.php -->
 

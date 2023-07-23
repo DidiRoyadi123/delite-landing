@@ -279,15 +279,15 @@
 			</div>
 			<br>
 			<ul class="list-inline" id="chart-skill">
-				<li><a href="mahasiswa/" target="_blank">
+				<li><a href="karyawan/" target="_blank">
 						<div class="easy-pie-chart percentage" data-percent="100" data-color="#0000FF">
-							<span class="percent">Login mahasiswa</span>
+							<span class="percent">Login karyawan</span>
 						</div>
 					</a>
 				</li>
-				<li><a href="dosenstaff/" target="_blank">
+				<li><a href="proyek/" target="_blank">
 						<div class="easy-pie-chart percentage" data-percent="100" data-color="#F7F66B">
-							<span class="percent">Login dosenstaff</span>
+							<span class="percent">Login proyek</span>
 						</div>
 					</a>
 				</li>
@@ -358,7 +358,7 @@
 			<div class="col-md-4">
 				<h3>SEMIRA</h3>
 				<p>
-					Proyek mahasiswa © 2017-<?php echo date('Y'); ?> <a href="http://muhidin.web.id" target="_blank">SkillPro Programming</a> Version 1.1.1. Kelas X dan XI. Tema Asli <a href="http://tangituru.com" target="_blank">CREATIVEFULL</a>.
+					Proyek karyawan © 2017-<?php echo date('Y'); ?> <a href="http://muhidin.web.id" target="_blank">SkillPro Programming</a> Version 1.1.1. divisi X dan XI. Tema Asli <a href="http://tangituru.com" target="_blank">CREATIVEFULL</a>.
 				</p>
 			</div>
 			<div class="col-md-4">
@@ -384,7 +384,7 @@
 				<div class="col-md-6 contain">
 					<h1 class="title">PROJECT TITLE</h1>
 					<div class="box-modal">
-						<p>Mentafakuri Ayat-ayat di Alam Semesta, Korelasi Rumus Fisika dan Ayat Al-Qur'an" itulah Materi Sanlat Selasa, 13 Juni 2017 yang diikuti oleh seluruh mahasiswa/i SMA PRO Kelas 10 dan 11, pemateri disampaikan oleh Bapak Ryksa Raharja, M.Pd.</p>
+						<p>Mentafakuri Ayat-ayat di Alam Semesta, Korelasi Rumus Fisika dan Ayat Al-Qur'an" itulah Materi Sanlat Selasa, 13 Juni 2017 yang diikuti oleh seluruh karyawan/i SMA PRO divisi 10 dan 11, pemateri disampaikan oleh Bapak Ryksa Raharja, M.Pd.</p>
 					</div>
 				</div>
 			</div>

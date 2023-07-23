@@ -2,7 +2,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Login dosenstaff SEMIRA | BKM UCIC</title>
+  <title>Login proyek SEMIRA | BKM UCIC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
   <link rel="shortcut icon" href="../../assets/img/logo-bkm.png">
   <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans'>

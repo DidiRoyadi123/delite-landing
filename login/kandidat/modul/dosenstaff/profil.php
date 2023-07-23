@@ -5,12 +5,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Login dosenstaff SEMIRA
-        <small>Pemilihan Ketua BKM</small>
+        Login proyek SEMIRA
+        <small>PT Himbar buana wibawa</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="."><i class="fa fa-dashboard"></i> Beranda</a></li>
-        <li><a href="?m=dosenstaff"><i class="fa fa-laptop"></i> dosenstaff</a></li>
+        <li><a href="?m=proyek"><i class="fa fa-laptop"></i> proyek</a></li>
         <li class="active">Profil</li>
       </ol>
     </section>
@@ -20,14 +20,14 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Profil dosenstaff</h3>
+              <h3 class="box-title">Profil proyek</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
 <?php
 $id=$_SESSION['idgkasis'];
 include "../sambungan.php";
-$sql="SELECT * FROM dosenstaff WHERE nip='$id'";
+$sql="SELECT * FROM proyek WHERE nip='$id'";
 $query=mysqli_query($koneksi,$sql);
 $r=mysqli_fetch_assoc($query);
 ?>
@@ -66,16 +66,16 @@ $r=mysqli_fetch_assoc($query);
 						<td>
 <?php 
 						if ($r['foto']!=''){
-						  echo "<img src=\"../gambar/dosenstaff/$r[foto]\" height=150 />";  
+						  echo "<img src=\"../gambar/proyek/$r[foto]\" height=150 />";  
 						}
 						else{
-						  echo "<img src=\"../gambar/dosenstaff/0.jpg\">";
+						  echo "<img src=\"../gambar/proyek/0.jpg\">";
 						}
 ?>
 					</tr>
 					<tr>
 						<td colspan=2>
-						<a href="?m=dosenstaff&s=edit&nip=<?php echo$id;?>" class="btn btn-large btn-primary"><i class="fa fa-times"></i> Edit</a>
+						<a href="?m=proyek&s=edit&nip=<?php echo$id;?>" class="btn btn-large btn-primary"><i class="fa fa-times"></i> Edit</a>
 					</tr>
                 </tbody>
               </table>

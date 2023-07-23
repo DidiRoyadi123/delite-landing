@@ -10,11 +10,11 @@
 -Buka browser lalu jalankan dengan menuliskan 		|
  localhost/SEMIRA					|
 							|
-Akun Admin				Akun mahasiswa	|
+Akun Admin				Akun karyawan	|
 user: admin				user: nailah	|
 pass: admin				pass: nailah	|
 							|
-Akun dosenstaff				Akun BKM	|
+Akun proyek				Akun BKM	|
 user: yoga				user: kandidat1	|
 pass: yoga				pass: kandidat1	|
 ========================================================|

@@ -129,52 +129,59 @@ $favicon = str_replace("../../", "", $fetch_title_favicon['lokasi_favicon']);
               <i class="fa fa-dashboard"></i> <span>Beranda</span>
             </a>
           </li>
+          <li class="<?php if ($aktif == 'Proyek') echo 'active'; ?> treeview">
+            <a href="?m=proyek">
+              <i class="fa fa-dashboard"></i> <span>Proyek</span>
+            </a>
+          </li>
           <li class="<?php if ($aktif == 'setting') echo 'active'; ?> treeview">
             <a href="?m=setting">
               <i class="fa fa-wrench"></i> <span>Pengaturan</span>
             </a>
           </li>
 
-          <!-- <li class="<?php if ($aktif == 'Kelas') echo 'active'; ?> treeview">
-              <a href="#">
-                <i class="fa fa-graduation-cap"></i> <span>Kelas</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="?m=kelas"><i class="fa fa-list"></i> Daftar</a></li>
-                <li><a href="?m=kelas&s=tambah"><i class="fa fa-plus"></i> Tambah</a></li>
-              </ul>
-            </li>
-            <li class="<?php if ($aktif == 'mahasiswa') echo 'active'; ?> treeview">
-              <a href="#">
-                <i class="fa fa-edit"></i> <span>mahasiswa</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="?m=mahasiswa"><i class="fa fa-list"></i> Daftar</a></li>
-                <li><a href="?m=mahasiswa&s=tambah"><i class="fa fa-user-plus"></i> Tambah</a></li>
-              </ul>
-            </li>
-            <li class="<?php if ($aktif == 'dosenstaff') echo 'active'; ?> treeview">
-              <a href="#">
-                <i class="fa fa-table"></i> <span>Dosen & Staff</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="?m=dosenstaff"><i class="fa fa-list"></i> Daftar</a></li>
-                <li><a href="?m=dosenstaff&s=tambah"><i class="fa fa-user-plus"></i> Tambah</a></li>
-              </ul>
-            </li>
-            <li class="<?php if ($aktif == 'Kandidat') echo 'active'; ?> treeview">
-              <a href="#">
-                <i class="fa fa-calendar"></i> <span>Kandidat</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="?m=kandidat"><i class="fa fa-list"></i> Daftar</a></li>
-                <li><a href="?m=kandidat&s=tambah"><i class="fa fa-user-plus"></i> Tambah</a></li>
-              </ul>
-            </li> -->
+          <li class="<?php if ($aktif == 'divisi') echo 'active'; ?> treeview">
+            <a href="#">
+              <i class="fa fa-graduation-cap"></i> <span>divisi</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="?m=divisi"><i class="fa fa-list"></i> Daftar</a></li>
+              <li><a href="?m=divisi&s=tambah"><i class="fa fa-plus"></i> Tambah</a></li>
+            </ul>
+          </li>
+          <li class="<?php if ($aktif == 'karyawan') echo 'active'; ?> treeview">
+            <a href="#">
+              <i class="fa fa-edit"></i> <span>karyawan</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="?m=karyawan"><i class="fa fa-list"></i> Daftar</a></li>
+              <li><a href="?m=karyawan&s=tambah"><i class="fa fa-user-plus"></i> Tambah</a></li>
+            </ul>
+          </li>
+
+          <!-- <li class="<?php if ($aktif == 'proyek') echo 'active'; ?> treeview">
+            <a href="#">
+              <i class="fa fa-table"></i> <span>Dosen & Staff</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="?m=proyek"><i class="fa fa-list"></i> Daftar</a></li>
+              <li><a href="?m=proyek&s=tambah"><i class="fa fa-user-plus"></i> Tambah</a></li>
+            </ul>
+          </li> -->
+          <!-- <li class="<?php if ($aktif == 'Kandidat') echo 'active'; ?> treeview">
+            <a href="#">
+              <i class="fa fa-calendar"></i> <span>Kandidat</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="?m=kandidat"><i class="fa fa-list"></i> Daftar</a></li>
+              <li><a href="?m=kandidat&s=tambah"><i class="fa fa-user-plus"></i> Tambah</a></li>
+            </ul>
+          </li> -->
+
           <li class="<?php if ($aktif == 'Admin') echo 'active'; ?> treeview">
             <a href="#">
               <i class="fa fa-laptop"></i>

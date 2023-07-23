@@ -2,7 +2,7 @@
 //if(isset($_POST['simpan'])){
 include "sesi.php";
 	include "../sambungan.php";
-	$tipe	="dosenstaff";
+	$tipe	="proyek";
 	$pemilih=$_SESSION['idgkasis'];
 	$kandidat=$_GET['id'];
 	$sql="INSERT INTO datapemilihan SET tipe='$tipe', idpemilih='$pemilih', idkandidat='$kandidat'";

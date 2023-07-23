@@ -56,13 +56,13 @@
             <ul class="nav navbar-nav">
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../gambar/dosenstaff/<?php echo $_SESSION['fotogkasis']; ?>" class="user-image" alt="<?php echo $_SESSION['usergkasis']; ?>">
+                  <img src="../gambar/proyek/<?php echo $_SESSION['fotogkasis']; ?>" class="user-image" alt="<?php echo $_SESSION['usergkasis']; ?>">
                   <span class="hidden-xs"><?php echo $_SESSION['namagkasis']; ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="../gambar/dosenstaff/<?php echo $_SESSION['fotogkasis']; ?>" class="img-circle" alt="<?php echo $_SESSION['usergkasis']; ?>">
+                    <img src="../gambar/proyek/<?php echo $_SESSION['fotogkasis']; ?>" class="img-circle" alt="<?php echo $_SESSION['usergkasis']; ?>">
                     <p>
                       <?php echo $_SESSION['namagkasis']; ?>
                       <small><?php echo $_SESSION['emailgkasis']; ?></small>
@@ -71,7 +71,7 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="?m=dosenstaff&s=profil" class="btn btn-default btn-flat">Profile</a>
+                      <a href="?m=proyek&s=profil" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
                       <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
@@ -94,11 +94,11 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="../gambar/dosenstaff/<?php echo $_SESSION['fotogkasis']; ?>" class="img-circle" alt="<?php echo $_SESSION['usergkasis']; ?>">
+              <img src="../gambar/proyek/<?php echo $_SESSION['fotogkasis']; ?>" class="img-circle" alt="<?php echo $_SESSION['usergkasis']; ?>">
             </div>
             <div class="pull-left info">
               <p><?php echo $_SESSION['namagkasis']; ?></p>
-              <a href="?m=dosenstaff&s=profil"><i class="fa fa-circle text-success"></i> Online</a>
+              <a href="?m=proyek&s=profil"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
           <!-- search form -->
@@ -120,7 +120,7 @@
               </a>
             </li>
             <li class="<?php if($aktif=='Profil') echo 'active';?> treeview">
-              <a href="?m=dosenstaff&a=profil">
+              <a href="?m=proyek&a=profil">
                 <i class="fa fa-edit"></i> <span>Profil</span>
               </a>
             </li>

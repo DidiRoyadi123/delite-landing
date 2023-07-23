@@ -16,11 +16,11 @@ if(isset($_GET['idp'])){
 		
 	$hapus = mysqli_query($koneksi,$sql);
 	if($hapus){
-//			echo 'Data Kelas Berhasil di Hapus ';
+//			echo 'Data divisi Berhasil di Hapus ';
 //			echo '<a href="index.php">Kembali</a>';
 		header("Location: ?m=kandidat");
 	}else{
-		echo 'Data Kelas GAGAL di Hapus';
+		echo 'Data divisi GAGAL di Hapus';
 		echo '<a href="index.php">Kembali</a>';
 	}
 }

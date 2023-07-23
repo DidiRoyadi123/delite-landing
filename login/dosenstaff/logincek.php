@@ -3,7 +3,7 @@ include_once "../sambungan.php";
 
 $user = $_POST['username'];
 $pass = md5($_POST['password']);
-$sql = "SELECT * FROM dosenstaff WHERE username='$user' AND password='$pass' AND aktif='Y'";
+$sql = "SELECT * FROM proyek WHERE username='$user' AND password='$pass' AND aktif='Y'";
 $login=mysqli_query($koneksi,$sql);
 $ketemu=mysqli_num_rows($login);
 $b=mysqli_fetch_array($login);

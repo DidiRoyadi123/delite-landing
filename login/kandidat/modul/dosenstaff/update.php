@@ -16,33 +16,33 @@ if(isset($_POST['simpan'])){
 	
 	if(empty($_POST['password'])){
 		if(empty($lokasi)){
-			$sql="UPDATE dosenstaff SET username='$pengguna', nama='$nama', jk='$jk', hp='$hp', email='$surel', mengajar='$mengajar', aktif='$aktif' WHERE nip='$id'";
+			$sql="UPDATE proyek SET username='$pengguna', nama='$nama', jk='$jk', hp='$hp', email='$surel', mengajar='$mengajar', aktif='$aktif' WHERE nip='$id'";
 		}else{
 			include "../fungsi/upload.php";
-			$folder="../gambar/dosenstaff/";
+			$folder="../gambar/proyek/";
 			$ukuran=100;
 			UploadFoto($namafile,$folder,$ukuran);
-			$sql="UPDATE dosenstaff SET username='$pengguna', nama='$nama', jk='$jk', hp='$hp', email='$surel', mengajar='$mengajar', aktif='$aktif', foto='$namafile' WHERE nip='$id'";
+			$sql="UPDATE proyek SET username='$pengguna', nama='$nama', jk='$jk', hp='$hp', email='$surel', mengajar='$mengajar', aktif='$aktif', foto='$namafile' WHERE nip='$id'";
 		}
 	}else{
 		if(empty($lokasi)){
-			$sql="UPDATE dosenstaff SET username='$pengguna', nama='$nama', jk='$jk', hp='$hp', email='$surel', mengajar='$mengajar', password='$sandi', aktif='$aktif' WHERE nip='$id'";
+			$sql="UPDATE proyek SET username='$pengguna', nama='$nama', jk='$jk', hp='$hp', email='$surel', mengajar='$mengajar', password='$sandi', aktif='$aktif' WHERE nip='$id'";
 		}else{
 			include "../fungsi/upload.php";
 			$folder="../gambar/pengguna/";
 			$ukuran=100;
 			UploadFoto($namafile,$folder,$ukuran);
-			$sql="UPDATE dosenstaff SET username='$pengguna', nama='$nama', jk='$jk', hp='$hp', email='$surel', mengajar='$mengajar', password='$sandi', aktif='$aktif', foto='$namafile' WHERE nip='$id'";
+			$sql="UPDATE proyek SET username='$pengguna', nama='$nama', jk='$jk', hp='$hp', email='$surel', mengajar='$mengajar', password='$sandi', aktif='$aktif', foto='$namafile' WHERE nip='$id'";
 		}
 	}
 	$simpan=mysqli_query($koneksi,$sql);
 	//var_dump($sql);
 	if($simpan){
-		header('Location:index.php?m=dosenstaff');
+		header('Location:index.php?m=proyek');
 		//echo "berhasil";
 	}else{
 		//echo "gagal alias tidak berhasil";
-		include "index.php?m=dosenstaff";
+		include "index.php?m=proyek";
 		echo '<script language="JavaScript">';
 			echo 'alert("Data Gagal diupdate.")';
 		echo '</script>';

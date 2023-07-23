@@ -6,11 +6,11 @@
     <section class="content-header">
       <h1>
         Adminiptrator SEMIRA
-        <small>Pemilihan Ketua BKM</small>
+        <small>PT Himbar buana wibawa</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="."><i class="fa fa-dashboard"></i> Beranda</a></li>
-        <li><a href="?m=dosenstaff"><i class="fa fa-laptop"></i> dosenstaff</a></li>
+        <li><a href="?m=proyek"><i class="fa fa-laptop"></i> proyek</a></li>
         <li class="active">Edit</li>
       </ol>
     </section>
@@ -20,19 +20,19 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Form Edit dosenstaff</h3>
+              <h3 class="box-title">Form Edit proyek</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
 <?php
 $id=$_GET['nip'];
 include "../sambungan.php";
-$sql="SELECT * FROM dosenstaff WHERE nip='$id'";
+$sql="SELECT * FROM proyek WHERE nip='$id'";
 $query=mysqli_query($koneksi,$sql);
 $r=mysqli_fetch_assoc($query);
 ?>
 			 <!--Mulai buat form-->
-			 <form action="?m=dosenstaff&s=update" method="post" enctype="multipart/form-data">
+			 <form action="?m=proyek&s=update" method="post" enctype="multipart/form-data">
               <table id="SEMIRA1" class="table table-bordered table-hover table-striped">
                 <tbody>
 					<tr>
@@ -78,10 +78,10 @@ $r=mysqli_fetch_assoc($query);
 						<td>
 <?php
 						if ($r['foto']!=''){
-						  echo "<img src=\"../gambar/dosenstaff/$r[foto]\" height=150 />";  
+						  echo "<img src=\"../gambar/proyek/$r[foto]\" height=150 />";  
 						}
 						else{
-						  echo "<img src=\"../gambar/dosenstaff/0.jpg\">";
+						  echo "<img src=\"../gambar/proyek/0.jpg\">";
 						}
 ?>
 					</tr>
