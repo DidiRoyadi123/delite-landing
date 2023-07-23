@@ -1589,6 +1589,53 @@
         </div>
       </div>
 
+      <!-- ABOUT SECTION -->
+      <div class="col-lg-6 col-xs-6">
+        <div class="small-box bg-fuchsia">
+          <div class="inner">
+            <p><strong>About US</strong></p>
+            <?php
+            $sql_about = "SELECT about_us FROM about_section";
+            $query_about = mysqli_query($koneksi, $sql_about);
+            $about_us = mysqli_fetch_assoc($query_about);
+            echo "<p>" . $about_us['about_us'] . "</p>";
+            ?>
+
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="#" class="small-box-footer" data-toggle="modal" data-target="#gantiaboutModal">Ganti about <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- Modal Ganti about -->
+      <div class="modal fade" id="gantiaboutModal" tabindex="-1" role="dialog" aria-labelledby="gantiaboutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="gantiaboutModalLabel">Ganti about</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Form untuk mengganti about -->
+              <form action="proses_ganti_about.php" method="POST">
+                <div class="form-group">
+                  <label for="about_us">About Us Baru:</label>
+                  <?php
+                  $sql_about = "SELECT about_us FROM about_section";
+                  $query_about = mysqli_query($koneksi, $sql_about);
+                  $about_us = mysqli_fetch_assoc($query_about);
+                  ?>
+                  <textarea cols="15" rows="15" class="form-control" id="about_us" name="about_us"><?php echo $about_us['about_us']; ?></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
 
